@@ -23,13 +23,16 @@ export default function Navigation({ locale, onNavigate }: NavigationProps) {
   return (
     <nav className="flex flex-col space-y-8">
       {/* Navigation Items */}
-      <ul className="space-y-6">
+      <ul className="space-y-8">
         {navigationItems.map((item, index) => (
           <li key={item.key}>
             <button
               onClick={() => onNavigate(item.key)}
-              className="group text-2xl md:text-3xl lg:text-4xl font-light text-gray-700 hover:text-gray-900 transition-all duration-300 tracking-wide text-left w-full artistic-text relative"
+              className="group text-4xl md:text-5xl lg:text-6xl font-light text-gray-700 hover:text-gray-900 transition-all duration-300 tracking-wide text-left w-full relative"
               style={{
+                fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+                fontWeight: "300",
+                letterSpacing: "0.02em",
                 animationDelay: `${index * 100}ms`,
               }}
             >

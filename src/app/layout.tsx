@@ -1,6 +1,7 @@
 import type React from "react"
 import type { Metadata } from "next"
 import "./globals.css"
+import { inter, cormorant } from "@/lib/fonts"
 
 export const metadata: Metadata = {
   title: "Norberto D'Abreu - Pintor",
@@ -13,7 +14,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="es">
+    <html lang="es" className={`${inter.variable} ${cormorant.variable}`}>
       <body>{children}</body>
     </html>
   )
