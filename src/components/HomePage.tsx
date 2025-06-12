@@ -1,47 +1,36 @@
-import Image from "next/image";
+'use client';
 import heroImage from '@/public/hero.webp';
+import Image from 'next/image';
+import Link from 'next/link';
 
 export default function HomePage() {
   return (
-    <div className="flex h-screen overflow-hidden">
-      {/* Menú lateral */}
-      <aside className="w-64 bg-[#1a1a1a] text-white p-6 z-10 flex flex-col justify-between">
-        <div>
-          <h1 className="text-2xl font-bold mb-8">Juan Pérez</h1>
-          <nav className="space-y-4 text-lg">
-            <a href="#" className="hover:text-yellow-400 transition">Inicio</a>
-            <a href="#" className="hover:text-yellow-400 transition">Galería</a>
-            <a href="#" className="hover:text-yellow-400 transition">Sobre mí</a>
-            <a href="#" className="hover:text-yellow-400 transition">Contacto</a>
-          </nav>
-        </div>
-        <footer className="text-sm text-gray-400">
-          © 2025 Juan Pérez
-        </footer>
-      </aside>
-
-      {/* Imagen principal */}
-      <main className="relative flex-1">
+    <main className="flex flex-col md:flex-row h-screen overflow-hidden">
+      {/* Imagen ilustración */}
+      <div className="relative w-4 md:w-1/2 h-1/2 md:h-full">
         <Image
-          src={heroImage} 
-          alt="Pintura de fondo"
+          src={heroImage}
+          alt="Retrato Norberto D'Abreu"
+        //   placeholder='blur'
           fill
-          priority
           className="object-cover"
+          priority
         />
-        {/* Capa oscura encima de la imagen */}
-        <div className="absolute inset-0 bg-black bg-opacity-50" />
+      </div>
 
-        {/* Contenido sobre la imagen */}
-        <div className="absolute inset-0 flex items-center justify-center text-white z-10 px-4 text-center">
-          <div>
-            <h2 className="text-4xl md:text-6xl font-bold mb-4">Bienvenido a mi mundo artístico</h2>
-            <p className="text-lg md:text-xl max-w-2xl mx-auto">
-              Descubre una selección de obras únicas, llenas de color, emoción y creatividad.
-            </p>
-          </div>
-        </div>
-      </main>
-    </div>
+      {/* Menú vertical */}
+      <div className="w-full md:w-1/2 bg-white flex flex-col justify-center items-start px-8 py-12 space-y-6">
+        <h1 className="text-4xl md:text-5xl font-serif font-bold">NORBERTO D’ABREU</h1>
+        <nav className="text-lg space-y-3 font-medium">
+          <Link href="#inicio" className="block hover:underline">INICIO</Link>
+          <Link href="#bio" className="block hover:underline">BIO</Link>
+          <Link href="#exhibiciones" className="block hover:underline">EXHIBICIONES</Link>
+          <Link href="#testimoniales" className="block hover:underline">TESTIMONIALES</Link>
+          <Link href="#retratos" className="block hover:underline">RETRATOS</Link>
+          <Link href="#obras" className="block hover:underline">OBRAS EN VENTA</Link>
+          <Link href="#contactos" className="block hover:underline">CONTACTOS</Link>
+        </nav>
+      </div>
+    </main>
   );
 }
