@@ -1,15 +1,13 @@
 "use client"
 
 import { type Locale, getTranslations } from "@/lib/i18n"
-import LanguageSwitcher from "./language-switcher"
 
 interface NavigationProps {
   locale: Locale
-  onLocaleChange: (locale: Locale) => void
   onNavigate: (section: string) => void
 }
 
-export default function Navigation({ locale, onLocaleChange, onNavigate }: NavigationProps) {
+export default function Navigation({ locale, onNavigate }: NavigationProps) {
   const t = getTranslations(locale)
 
   const navigationItems = [
@@ -24,25 +22,19 @@ export default function Navigation({ locale, onLocaleChange, onNavigate }: Navig
 
   return (
     <nav className="flex flex-col space-y-8">
-      {/* Language Switcher */}
-      <div className="flex justify-end mb-4">
-        <LanguageSwitcher currentLocale={locale} onLocaleChange={onLocaleChange} />
-      </div>
-
-      {/* Artist Name */}
-      <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-gray-800 mb-12 tracking-wider leading-tight">
-        {t.artistName}
-      </h1>
-
       {/* Navigation Items */}
       <ul className="space-y-6">
-        {navigationItems.map((item) => (
+        {navigationItems.map((item, index) => (
           <li key={item.key}>
             <button
               onClick={() => onNavigate(item.key)}
-              className="text-2xl md:text-3xl lg:text-4xl font-light text-gray-700 hover:text-gray-900 transition-colors duration-300 tracking-wide text-left w-full"
+              className="group text-2xl md:text-3xl lg:text-4xl font-light text-gray-700 hover:text-gray-900 transition-all duration-300 tracking-wide text-left w-full artistic-text relative"
+              style={{
+                animationDelay: `${index * 100}ms`,
+              }}
             >
-              {item.label}
+              <span className="relative z-10">{item.label}</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-yellow-200 to-orange-200 opacity-0 group-hover:opacity-20 transition-opacity duration-300 rounded-lg -mx-4 -my-2"></div>
             </button>
           </li>
         ))}
