@@ -1,3 +1,8 @@
+import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/navigation';
+import { navItems } from '@/data/navigation';
+import { LanguageSwitcher } from '@/components/layout/LanguageSwitcher';
+
 type PageIntroProps = {
   eyebrow?: string;
   title: string;
@@ -5,26 +10,55 @@ type PageIntroProps = {
 };
 
 export function PageIntro({ eyebrow, title, description }: PageIntroProps) {
+  const tNav = useTranslations('nav');
+
   return (
-    <section className="mx-auto flex min-h-screen w-full max-w-6xl flex-col justify-center px-5 py-20 sm:px-8 lg:px-12">
-      {eyebrow ? (
-        <p className="mb-5 text-sm uppercase tracking-[0.35em] text-[#c4914b]">
-          {eyebrow}
-        </p>
-      ) : null}
+    <section className="paper-texture min-h-screen px-5 py-6 text-[#1b1a18] sm:px-8 lg:px-14">
+      <header className="flex items-start justify-between gap-6">
+        <Link
+          href="/"
+          className="display-title max-w-[22rem] text-4xl leading-[0.9] text-black sm:text-5xl"
+        >
+          Norberto D’Abreu
+        </Link>
 
-      <h2 className="max-w-3xl text-5xl font-semibold tracking-tight text-white sm:text-6xl lg:text-7xl">
-        {title}
-      </h2>
+        <LanguageSwitcher />
+      </header>
 
-      <p className="mt-6 max-w-2xl text-lg leading-8 text-white/60">
-        {description}
-      </p>
+      <div className="mx-auto grid max-w-7xl gap-12 py-16 lg:grid-cols-[280px_1fr] lg:py-24">
+        <nav className="flex flex-col gap-4">
+          {navItems.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="sketch-nav text-2xl leading-none text-black/65 transition hover:translate-x-1 hover:text-black"
+            >
+              {tNav(item.labelKey)}
+            </Link>
+          ))}
+        </nav>
 
-      <div className="mt-12 rounded-3xl border border-white/10 bg-white/[0.04] p-8">
-        <p className="text-sm uppercase tracking-[0.3em] text-white/35">
-          Content in progress
-        </p>
+        <main>
+          {eyebrow ? (
+            <p className="sketch-nav mb-5 text-xl text-black/45">
+              {eyebrow}
+            </p>
+          ) : null}
+
+          <h1 className="display-title max-w-4xl text-6xl leading-[0.88] text-black sm:text-7xl lg:text-8xl">
+            {title}
+          </h1>
+
+          <p className="mt-8 max-w-2xl text-lg leading-8 text-black/60">
+            {description}
+          </p>
+
+          <div className="mt-12 rounded-[2rem] border border-black/10 bg-white/35 p-8">
+            <p className="sketch-nav text-xl text-black/35">
+              Contenido en preparación
+            </p>
+          </div>
+        </main>
       </div>
     </section>
   );

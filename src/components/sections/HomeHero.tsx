@@ -1,101 +1,130 @@
+import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
-
-const featureCards = [
-  {
-    titleKey: 'featuredTitle',
-    textKey: 'featuredText',
-  },
-  {
-    titleKey: 'shopTitle',
-    textKey: 'shopText',
-  },
-  {
-    titleKey: 'multilanguageTitle',
-    textKey: 'multilanguageText',
-  },
-];
+import { navItems } from '@/data/navigation';
+import { LanguageSwitcher } from '@/components/layout/LanguageSwitcher';
 
 export function HomeHero() {
   const tSite = useTranslations('site');
-  const tHome = useTranslations('home');
   const tNav = useTranslations('nav');
 
   return (
-    <section className="relative min-h-screen overflow-hidden">
-      <div className="absolute inset-0 opacity-40">
-        <div className="absolute left-[5%] top-[12%] h-[32rem] w-[32rem] rounded-full bg-[#c4914b]/20 blur-3xl" />
-        <div className="absolute bottom-[6%] right-[8%] h-[26rem] w-[26rem] rounded-full bg-white/10 blur-3xl" />
-      </div>
-
-      <div className="relative mx-auto grid min-h-screen max-w-7xl items-center gap-12 px-5 py-16 sm:px-8 lg:grid-cols-[1fr_0.9fr] lg:px-12">
-        <div>
-          <p className="text-sm uppercase tracking-[0.45em] text-[#c4914b]">
-            {tSite('tagline')}
-          </p>
-
-          <h2 className="mt-7 max-w-4xl text-6xl font-semibold leading-[0.92] tracking-tight text-white sm:text-7xl xl:text-8xl">
-            {tSite('artistName')}
-          </h2>
-
-          <p className="mt-7 max-w-2xl text-lg leading-8 text-white/65">
-            {tSite('intro')}
-          </p>
-
-          <div className="mt-10 flex flex-wrap gap-4">
-            <Link
-              href="/obras-en-venta"
-              className="rounded-full bg-[#c4914b] px-7 py-3 text-sm font-semibold text-black transition hover:bg-[#e0ae68]"
-            >
-              {tNav('shop')}
-            </Link>
-
-            <Link
-              href="/bio"
-              className="rounded-full border border-white/15 px-7 py-3 text-sm font-semibold text-white/80 transition hover:border-white/30 hover:bg-white/10 hover:text-white"
-            >
-              {tNav('bio')}
-            </Link>
-          </div>
+    <section className="paper-texture h-screen overflow-hidden text-[#1b1a18]">
+      {/* Desktop */}
+      <div className="relative hidden h-screen overflow-hidden px-8 py-5 md:flex md:items-center md:justify-center">
+        <div className="absolute right-8 top-8 z-20">
+          <LanguageSwitcher />
         </div>
 
-        <div className="relative">
-          <div className="aspect-[4/5] overflow-hidden rounded-[2.5rem] border border-white/10 bg-[#1a1714] p-5 shadow-2xl">
-            <div className="flex h-full items-center justify-center rounded-[2rem] border border-white/10 bg-[radial-gradient(circle_at_50%_20%,rgba(196,145,75,0.34),transparent_34%),linear-gradient(150deg,#2a2119,#0d0b0a)]">
-              <div className="text-center">
-                <p className="text-8xl font-semibold text-white/15 sm:text-9xl">
-                  ND
-                </p>
-                <p className="mt-5 text-sm uppercase tracking-[0.35em] text-white/35">
-                  Hero artwork
-                </p>
-              </div>
-            </div>
+        <div
+          className="
+            grid
+            w-fit
+            items-center
+            gap-[clamp(1.5rem,2.8vw,3rem)]
+            [--artwork-width:clamp(460px,29vw,540px)]
+            [--menu-width:clamp(390px,25vw,500px)]
+            grid-cols-[var(--artwork-width)_var(--menu-width)]
+          "
+        >
+          <div className="w-[var(--artwork-width)]">
+            <Link
+              href="/"
+              className="
+                display-title
+                mb-4
+                block
+                w-full
+                whitespace-nowrap
+                text-center
+                text-[clamp(2.55rem,3.1vw,3.55rem)]
+                leading-[0.82]
+                tracking-[-0.045em]
+                text-black
+              "
+            >
+              {tSite('artistName')}
+            </Link>
+
+            <Image
+              src="/images/portada/portada-web.jpg"
+              alt="Artwork detail by Norberto D’Abreu"
+              width={1200}
+              height={1600}
+              priority
+              sizes="(min-width: 768px) 540px, 100vw"
+              className="block h-auto max-h-[calc(100vh-7.2rem)] w-full object-contain"
+            />
           </div>
 
-          <div className="absolute -bottom-6 -left-6 hidden max-w-xs rounded-3xl border border-white/10 bg-black/55 p-5 backdrop-blur-xl sm:block">
-            <p className="text-sm leading-6 text-white/65">
-              Replace this placeholder with the main portrait artwork from the sketches.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div className="relative mx-auto grid max-w-7xl gap-4 px-5 pb-16 sm:px-8 md:grid-cols-3 lg:px-12">
-        {featureCards.map((card) => (
-          <article
-            key={card.titleKey}
-            className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur"
+          <nav
+            className="
+              flex
+              w-[var(--menu-width)]
+              flex-col
+              justify-center
+              gap-[clamp(0.65rem,1.55vh,1.1rem)]
+            "
           >
-            <h3 className="text-xl font-semibold text-white">
-              {tHome(card.titleKey)}
-            </h3>
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="
+                  sketch-nav
+                  whitespace-nowrap
+                  text-[clamp(1.75rem,2.35vw,3rem)]
+                  leading-none
+                  text-black/85
+                  transition
+                  duration-300
+                  hover:translate-x-2
+                  hover:text-black
+                "
+              >
+                {tNav(item.labelKey)}
+              </Link>
+            ))}
+          </nav>
+        </div>
+      </div>
 
-            <p className="mt-3 text-sm leading-6 text-white/55">
-              {tHome(card.textKey)}
-            </p>
-          </article>
-        ))}
+      {/* Mobile */}
+      <div className="min-h-screen md:hidden">
+        <header className="flex items-start justify-between gap-4 px-5 py-5">
+          <Link
+            href="/"
+            className="display-title max-w-[13rem] text-3xl leading-[0.9] text-black"
+          >
+            {tSite('artistName')}
+          </Link>
+
+          <LanguageSwitcher />
+        </header>
+
+        <div className="flex justify-center border-y border-black/10 px-4 py-4">
+          <Image
+            src="/images/portada/portada-web.jpg"
+            alt="Artwork detail by Norberto D’Abreu"
+            width={1200}
+            height={1600}
+            priority
+            sizes="100vw"
+            className="h-auto max-h-[58vh] w-auto max-w-full object-contain"
+          />
+        </div>
+
+        <nav className="flex flex-col gap-3 px-6 py-7">
+          {navItems.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="sketch-nav border-b border-black/10 pb-3 text-2xl leading-none text-black/85"
+            >
+              {tNav(item.labelKey)}
+            </Link>
+          ))}
+        </nav>
       </div>
     </section>
   );

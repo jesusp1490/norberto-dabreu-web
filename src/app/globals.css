@@ -1,13 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0f0d0b;
-  --foreground: #f5efe7;
-  --muted: #b7aa9b;
-  --accent: #c4914b;
-  --panel: #1a1714;
-  --panel-soft: #24201c;
-  --border: rgba(245, 239, 231, 0.14);
+  --background: #efeee8;
+  --foreground: #1b1a18;
+  --muted: #6f6a62;
+  --paper: #efeee8;
+  --paper-soft: #f7f5ef;
+  --border: rgba(27, 26, 24, 0.14);
 }
 
 * {
@@ -20,9 +19,7 @@ html {
 
 body {
   margin: 0;
-  background:
-    radial-gradient(circle at top left, rgba(196, 145, 75, 0.18), transparent 34rem),
-    linear-gradient(135deg, #0f0d0b 0%, #18130f 48%, #080706 100%);
+  background: var(--paper);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -33,5 +30,26 @@ a {
 }
 
 ::selection {
-  background: rgba(196, 145, 75, 0.45);
+  background: rgba(27, 26, 24, 0.18);
+}
+
+.display-title {
+  font-family: "Times New Roman", Georgia, serif;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.sketch-nav {
+  font-family: "Arial Narrow", "Trebuchet MS", Arial, sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.045em;
+  text-transform: uppercase;
+}
+
+.paper-texture {
+  background:
+    radial-gradient(circle at 20% 10%, rgba(255, 255, 255, 0.7), transparent 26rem),
+    radial-gradient(circle at 90% 80%, rgba(0, 0, 0, 0.05), transparent 32rem),
+    linear-gradient(135deg, #f2f0ea 0%, #e9e7df 100%);
 }

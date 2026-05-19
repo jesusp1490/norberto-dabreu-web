@@ -15,7 +15,7 @@ export function LanguageSwitcher() {
   const router = useRouter();
 
   return (
-    <div className="flex items-center gap-1 rounded-full border border-white/10 bg-white/5 p-1">
+    <div className="flex items-center gap-1 rounded-full border border-black/10 bg-white/50 p-1 backdrop-blur-sm">
       {languages.map((language) => {
         const isActive = locale === language.locale;
 
@@ -27,8 +27,8 @@ export function LanguageSwitcher() {
             className={[
               'rounded-full px-3 py-1 text-xs font-medium transition',
               isActive
-                ? 'bg-[#c4914b] text-black'
-                : 'text-white/65 hover:bg-white/10 hover:text-white',
+                ? 'bg-black text-white'
+                : 'text-black/55 hover:bg-black/10 hover:text-black',
             ].join(' ')}
           >
             {language.label}
