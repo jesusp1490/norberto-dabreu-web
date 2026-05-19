@@ -1,0 +1,43 @@
+{
+    "site": {
+        "artistName": "Norberto D’Abreu",
+        "tagline": "Arte, memoria, color y materia",
+        "intro": "Una obra visual atravesada por el gesto, la textura y la fuerza expresiva del retrato.",
+        "enter": "Entrar"
+    },
+    "nav": {
+        "home": "Inicio",
+        "bio": "Bio",
+        "exhibitions": "Exhibiciones",
+        "testimonials": "Testimoniales",
+        "portraits": "Retratos",
+        "shop": "Obras en venta",
+        "contact": "Contactos"
+    },
+    "home": {
+        "featuredTitle": "Portfolio artístico",
+        "featuredText": "Explora la biografía, exhibiciones, retratos, testimoniales y obras disponibles del artista.",
+        "shopTitle": "Obras en venta",
+        "shopText": "La web estará preparada para evolucionar hacia una tienda online de obras originales.",
+        "multilanguageTitle": "Disponible en tres idiomas",
+        "multilanguageText": "Español, inglés y portugués desde la primera versión."
+    },
+    "pages": {
+        "bioTitle": "Bio",
+        "bioDescription": "Biografía, declaración artística, CV y archivo fotográfico.",
+        "exhibitionsTitle": "Exhibiciones",
+        "exhibitionsDescription": "Listado de exhibiciones, colecciones y series del artista.",
+        "testimonialsTitle": "Testimoniales",
+        "testimonialsDescription": "Críticas, entrevistas, prensa, fotos y videos.",
+        "portraitsTitle": "Retratos",
+        "portraitsDescription": "Retratos, encargos y trabajos personalizados.",
+        "shopTitle": "Obras en venta",
+        "shopDescription": "Catálogo de obras preparado para convertirse en tienda online.",
+        "contactTitle": "Contactos",
+        "contactDescription": "Formulario, teléfonos, correo, redes sociales y métodos de pago."
+    },
+    "common": {
+        "comingSoon": "Contenido en preparación",
+        "viewMore": "Ver más"
+    }
+}

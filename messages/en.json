@@ -1,0 +1,43 @@
+{
+    "site": {
+        "artistName": "Norberto D’Abreu",
+        "tagline": "Art, memory, color and matter",
+        "intro": "A visual body of work shaped by gesture, texture and the expressive power of portraiture.",
+        "enter": "Enter"
+    },
+    "nav": {
+        "home": "Home",
+        "bio": "Bio",
+        "exhibitions": "Exhibitions",
+        "testimonials": "Testimonials",
+        "portraits": "Portraits",
+        "shop": "Artworks for sale",
+        "contact": "Contact"
+    },
+    "home": {
+        "featuredTitle": "Art portfolio",
+        "featuredText": "Explore the artist’s biography, exhibitions, portraits, testimonials and available artworks.",
+        "shopTitle": "Artworks for sale",
+        "shopText": "The website will be ready to evolve into a full online store for original artworks.",
+        "multilanguageTitle": "Available in three languages",
+        "multilanguageText": "Spanish, English and Portuguese from the first version."
+    },
+    "pages": {
+        "bioTitle": "Bio",
+        "bioDescription": "Biography, artist statement, CV and photographic archive.",
+        "exhibitionsTitle": "Exhibitions",
+        "exhibitionsDescription": "List of exhibitions, collections and artistic series.",
+        "testimonialsTitle": "Testimonials",
+        "testimonialsDescription": "Reviews, interviews, press, photos and videos.",
+        "portraitsTitle": "Portraits",
+        "portraitsDescription": "Portraits, commissions and personalized works.",
+        "shopTitle": "Artworks for sale",
+        "shopDescription": "Artwork catalogue prepared to become an online store.",
+        "contactTitle": "Contact",
+        "contactDescription": "Form, phone numbers, email, social networks and payment methods."
+    },
+    "common": {
+        "comingSoon": "Content in progress",
+        "viewMore": "View more"
+    }
+}
