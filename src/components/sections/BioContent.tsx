@@ -26,23 +26,37 @@ export function BioContent() {
 
       {/* Desktop */}
       <div
-        className={[
-          'hidden h-screen min-h-0 items-center justify-center px-8 py-6 lg:grid',
-          isReadingSection
-            ? 'grid-cols-[320px_minmax(780px,1080px)] gap-10'
-            : 'grid-cols-[340px_minmax(760px,980px)] gap-12',
-        ].join(' ')}
-      >
+        className="
+            hidden
+            h-screen
+            min-h-0
+            grid-cols-[340px_minmax(760px,1100px)]
+            items-center
+            justify-center
+            gap-12
+            px-8
+            py-6
+            lg:grid
+        "
+        >
         <aside className="flex h-[calc(100vh-5rem)] min-h-0 flex-col justify-center">
           <Link
             href="/"
-            className={[
-              'display-title mb-4 block w-full whitespace-nowrap text-left leading-[0.85] tracking-[-0.045em] text-black',
-              isReadingSection ? 'text-[1.95rem]' : 'text-[2.15rem]',
-            ].join(' ')}
-          >
+            className="
+                display-title
+                mb-4
+                block
+                w-full
+                whitespace-nowrap
+                text-left
+                text-[2.15rem]
+                leading-[0.85]
+                tracking-[-0.045em]
+                text-black
+            "
+            >
             Norberto D’Abreu
-          </Link>
+            </Link>
 
           <Image
             src="/images/portada/portada-web.jpg"
@@ -51,16 +65,18 @@ export function BioContent() {
             height={1600}
             priority
             sizes="340px"
-            className={[
-              'block h-auto w-full object-contain object-left-top',
-              isReadingSection
-                ? 'max-h-[calc(100vh-8rem)]'
-                : 'max-h-[calc(100vh-7rem)]',
-            ].join(' ')}
-          />
+            className="
+                block
+                h-auto
+                max-h-[calc(100vh-7rem)]
+                w-full
+                object-contain
+                object-left-top
+            "
+            />
         </aside>
 
-        <main className="flex h-[calc(100vh-5rem)] min-h-0 flex-col gap-5">
+        <main className="flex h-[calc(100vh-4.5rem)] min-h-0 flex-col gap-4">
           <p className="sketch-nav text-xl text-[#1f6f8b]">
             {content.pageLabel}
           </p>
