@@ -5,8 +5,9 @@ type CvGroup = {
   items: string[];
 };
 
-type BioLanguageContent = {
+export type BioLanguageContent = {
   pageLabel: string;
+  backToBioMenu: string;
   tabs: Record<BioSectionKey, string>;
   biography: {
     title: string;
@@ -20,15 +21,12 @@ type BioLanguageContent = {
     title: string;
     groups: CvGroup[];
   };
-  oldPhotos: {
-    title: string;
-    subtitle: string;
-  };
 };
 
 export const bioContent: Record<string, BioLanguageContent> = {
   es: {
     pageLabel: 'Bio',
+    backToBioMenu: 'Volver',
     tabs: {
       biography: 'Biografía',
       statement: 'Declaración artística',
@@ -86,16 +84,16 @@ export const bioContent: Record<string, BioLanguageContent> = {
         {
           title: 'Exposiciones seleccionadas',
           items: [
-            '2019 · Exposición individual “Los Colores de la Lusofonía”. Galería Fernando Pessoa, Palacio de la Independencia de Portugal. Lisboa.',
-            '2016 · Exposición individual “Norberto D’Abreu… en todos los Tiempos”. Retrospectiva. Ateneo de Cabudare, Venezuela.',
+            '2019 · Exposición individual “Los Colores de la Lusofonía”. Lisboa, Portugal.',
+            '2016 · Retrospectiva “Norberto D’Abreu… en todos los Tiempos”. Venezuela.',
             '2015 · Exposición individual “Doradas Páginas Lusitanas”. Espinho, Portugal.',
             '2014 · Exposición individual “Doradas Páginas Lusitanas”. Lisboa, Portugal.',
-            '2013 · Exposición individual “Colores que danzan... unos cuentan y otros riman”. Lara, Venezuela.',
-            '2012 · Exposición individual “Mujeres... Tradición Infinita”. UCLA, Barquisimeto, Venezuela.',
-            '2008 · Exposición individual “Con las Tablas en el Corazón”. UCLA, Barquisimeto, Venezuela.',
-            '2001 · Exposición individual “Dorados de Sol... Génesis de Pueblo”. UCLA, Barquisimeto, Venezuela.',
+            '2013 · Exposición individual “Colores que danzan... unos cuentan y otros riman”. Venezuela.',
+            '2012 · Exposición individual “Mujeres... Tradición Infinita”. Venezuela.',
+            '2008 · Exposición individual “Con las Tablas en el Corazón”. Venezuela.',
+            '2001 · Exposición individual “Dorados de Sol... Génesis de Pueblo”. Venezuela.',
             '2000 · Exposición individual “Diseños de Piel”.',
-            '1995 · Exposición individual “Raíces, Tierra y Viento”. Galería Parque Real, Lara, Venezuela.',
+            '1995 · Exposición individual “Raíces, Tierra y Viento”. Venezuela.',
           ],
         },
         {
@@ -112,9 +110,181 @@ export const bioContent: Record<string, BioLanguageContent> = {
         },
       ],
     },
-    oldPhotos: {
-      title: 'Fotos viejas',
-      subtitle: 'Aquí colocaremos el archivo fotográfico antiguo cuando compartas las imágenes.',
+  },
+
+  en: {
+    pageLabel: 'Bio',
+    backToBioMenu: 'Back',
+    tabs: {
+      biography: 'Biography',
+      statement: 'Artistic statement',
+      cv: 'CV',
+    },
+    biography: {
+      title: 'Biography',
+      paragraphs: [
+        'Norberto D’Abreu was born in Venezuela in 1956 to Portuguese parents. He inherited their culture and traditions, blending them with the colors and customs of the land where he was born.',
+        'He began painting under the guidance of Madrid-born painter Alfonso de la Vega, nephew of the renowned Spanish painter José María Sert, who introduced him to art from a very early age.',
+        'He studied drawing, advertising and decoration in Caracas. In his search to broaden his knowledge, he travelled to Spain, where he also studied ceramics, photography, fashion design, landscaping and museology in several academies.',
+        'In Spain, he trained at institutions such as the Círculo de Bellas Artes, Academia Artium, Academia Arjona, Academia de Artes y Oficios and in the atelier of painter Rogelio García Vásquez.',
+        'His work absorbs influences from Sorolla, Velázquez, French impressionist palettes, tropical light and Spanish glazes, creating a distinctive synthesis within his personal style.',
+        'After returning to Venezuela, he developed an extensive cultural career as an illustrator, textile designer, graphic designer and fashion designer. He later founded his own art atelier, where he taught drawing, painting and art history.',
+        'From 2013 onward, he travelled between Europe and Venezuela. After several exhibitions, he decided to settle in Portugal, where he continues to develop his work, portraits and visual stories filled with color, light and memory.',
+      ],
+    },
+    statement: {
+      title: 'Artistic Statement',
+      paragraphs: [
+        'I am a figurative artist, working with impressionist palette colors and concepts of open composition.',
+        'My work is built through precise drawing and subtle, free brushstrokes. I see what I paint with eyes of hope.',
+        'I like to break the form through techniques that I mix and merge with the main figure, whether working from live models, in the studio, or through audiovisual media and photographs.',
+        'Always a canvas, but also wood, synthetic materials, gold leaf, raw canvas, ceramics, bronze, wire, brushes, paintbrushes, spatulas and acrylics.',
+        'My Spanish tutor and grandfather, Alfonso de la Vega, guided my euphoric, childlike and empirical passion for art, passing on to me his artistic and cultural knowledge.',
+        'Through him I discovered the colors of the Impressionists, the drawing of the Spanish classics, tropical lights and Spanish glazes.',
+        'The human figure is the foundation of my work. For me, it is the axis of the story I want to tell through my colors, searching for the gestures, gazes and unique attitudes of each character.',
+        'In my work, I speak of love, family, depth, roots and beauty. It is the profound expression of my feelings and of my love for life.',
+      ],
+    },
+    cv: {
+      title: 'Curriculum Vitae',
+      groups: [
+        {
+          title: 'Education',
+          items: [
+            '1960–1974 · Primary and secondary education. Caracas, Venezuela.',
+            '1974–1976 · Decoration, Academia Villasmil de León. Caracas, Venezuela.',
+            '1974–1976 · Marketing and Advertising, ISUM. Caracas, Venezuela.',
+            '1974–1976 · Advertising Drawing, Academia Higuera Jiménez. Caracas, Venezuela.',
+            'Artistic Drawing and Painting, Academia Alfonso de la Vega. Caracas, Venezuela.',
+            '1976–1980 · Classical painting, new styles, impressionist painting, plein air painting and fashion design. Madrid, Spain.',
+            'Free Painting, Círculo de Bellas Artes. Madrid, Spain.',
+          ],
+        },
+        {
+          title: 'Professional work',
+          items: [
+            '1975–1976 · Creative and advertising illustrator at Ghersy Quintero & Ted Bates. Caracas, Venezuela.',
+            '1980–1989 · Artistic painting, graphic design, advertising, photography, illustration, window dressing and events. GraphicArt 2A.',
+            '1990–2017 · Founder and instructor of Atelier-Gallery BARROCONARTE.',
+            'Drawing, ceramics and painting classes and workshops.',
+          ],
+        },
+        {
+          title: 'Selected exhibitions',
+          items: [
+            '2019 · Solo exhibition “Los Colores de la Lusofonía”. Lisbon, Portugal.',
+            '2016 · Retrospective “Norberto D’Abreu… en todos los Tiempos”. Venezuela.',
+            '2015 · Solo exhibition “Doradas Páginas Lusitanas”. Espinho, Portugal.',
+            '2014 · Solo exhibition “Doradas Páginas Lusitanas”. Lisbon, Portugal.',
+            '2013 · Solo exhibition “Colores que danzan... unos cuentan y otros riman”. Venezuela.',
+            '2012 · Solo exhibition “Mujeres... Tradición Infinita”. Venezuela.',
+            '2008 · Solo exhibition “Con las Tablas en el Corazón”. Venezuela.',
+            '2001 · Solo exhibition “Dorados de Sol... Génesis de Pueblo”. Venezuela.',
+            '2000 · Solo exhibition “Diseños de Piel”.',
+            '1995 · Solo exhibition “Raíces, Tierra y Viento”. Venezuela.',
+          ],
+        },
+        {
+          title: 'Selected collections',
+          items: [
+            'Besharat Gallery, Atlanta, Georgia, USA.',
+            'Museum of Latin American Art, MOLAA, Los Angeles, USA.',
+            'Universidad Centro Occidental Lisandro Alvarado UCLA, Venezuela.',
+            'Guayasamín Museum, Quito, Ecuador.',
+            'Gabriela Mistral Museum, Chile.',
+            'Palace of the Independence of Portugal, Lisbon.',
+            'Private collections in America and Europe.',
+          ],
+        },
+      ],
+    },
+  },
+
+  pt: {
+    pageLabel: 'Bio',
+    backToBioMenu: 'Voltar',
+    tabs: {
+      biography: 'Biografia',
+      statement: 'Declaração artística',
+      cv: 'CV',
+    },
+    biography: {
+      title: 'Biografia',
+      paragraphs: [
+        'Norberto D’Abreu nasceu na Venezuela em 1956, filho de pais portugueses. Recebeu toda a sua cultura e tradição, misturando-a com as cores e costumes da terra que o viu nascer.',
+        'Iniciou-se na pintura com o pintor madrileno Alfonso de la Vega, sobrinho do famoso pintor espanhol José María Sert, que o introduziu na arte desde muito cedo.',
+        'Estudou desenho, publicidade e decoração em Caracas. Na procura de ampliar os seus conhecimentos, viajou para Espanha, onde também estudou cerâmica, fotografia, design de moda, paisagismo e museologia em várias academias.',
+        'Em Espanha, formou-se em instituições como o Círculo de Bellas Artes, Academia Artium, Academia Arjona, Academia de Artes y Oficios e no atelier do pintor Rogelio García Vásquez.',
+        'A sua obra absorve influências de Sorolla, Velázquez, das paletas impressionistas francesas, da luz tropical e das veladuras espanholas, criando uma síntese muito própria no seu estilo.',
+        'Ao regressar à Venezuela, desenvolveu uma ampla atividade cultural como ilustrador, designer têxtil, designer gráfico e designer de moda. Mais tarde fundou o seu atelier de arte, onde deu aulas de desenho, pintura e história da arte.',
+        'A partir de 2013 viajou entre a Europa e a Venezuela. Depois de várias exposições, decidiu instalar-se em Portugal, onde continua a desenvolver a sua obra, os seus retratos e as suas histórias visuais cheias de cor, luz e memória.',
+      ],
+    },
+    statement: {
+      title: 'Declaração Artística',
+      paragraphs: [
+        'Sou figurativo, com cores de paleta impressionista e conceitos de composição aberta.',
+        'Trabalho a partir de um desenho preciso e de pinceladas subtis e livres. Vejo o que pinto com olhos de esperança.',
+        'Gosto de romper a forma com técnicas que misturo e confundo com a figura principal, seja com modelos ao vivo, no atelier, ou através de meios audiovisuais e fotografias.',
+        'Sempre uma tela, mas também madeiras, materiais sintéticos, folha dourada, linho cru, cerâmica, bronze, arame, pincéis, brochas, espátulas e acrílicos.',
+        'O meu tutor e avô espanhol, Alfonso de la Vega, orientou a minha paixão eufórica, infantil e empírica pela arte, transmitindo-me os seus conhecimentos artísticos e culturais.',
+        'Com ele conheci as cores dos impressionistas, o desenho dos clássicos espanhóis, as luzes tropicais e as veladuras espanholas.',
+        'A figura humana é a base do meu trabalho. Para mim, é o eixo da história que conto com as minhas cores, procurando descobrir gestos, olhares e atitudes únicas de cada personagem.',
+        'Na minha obra falo do amor, da família, do profundo, das raízes e do belo. É a expressão profunda dos meus sentimentos e do meu amor pela vida.',
+      ],
+    },
+    cv: {
+      title: 'Curriculum Vitae',
+      groups: [
+        {
+          title: 'Educação',
+          items: [
+            '1960–1974 · Ensino básico e secundário. Caracas, Venezuela.',
+            '1974–1976 · Decoração, Academia Villasmil de León. Caracas, Venezuela.',
+            '1974–1976 · Marketing e Publicidade, ISUM. Caracas, Venezuela.',
+            '1974–1976 · Desenho Publicitário, Academia Higuera Jiménez. Caracas, Venezuela.',
+            'Desenho e Pintura Artística, Academia Alfonso de la Vega. Caracas, Venezuela.',
+            '1976–1980 · Pintura clássica, novos estilos, pintura impressionista, pintura ao ar livre e design de moda. Madrid, Espanha.',
+            'Pintura Livre, Círculo de Bellas Artes. Madrid, Espanha.',
+          ],
+        },
+        {
+          title: 'Trabalho profissional',
+          items: [
+            '1975–1976 · Criador e desenhador publicitário na Ghersy Quintero & Ted Bates. Caracas, Venezuela.',
+            '1980–1989 · Pintura artística, design gráfico, publicidade, fotografia, ilustração, vitrinismo e eventos. GraphicArt 2A.',
+            '1990–2017 · Fundador e instrutor do Atelier-Galeria BARROCONARTE.',
+            'Aulas e workshops de desenho, cerâmica e pintura.',
+          ],
+        },
+        {
+          title: 'Exposições selecionadas',
+          items: [
+            '2019 · Exposição individual “Los Colores de la Lusofonía”. Lisboa, Portugal.',
+            '2016 · Retrospectiva “Norberto D’Abreu… en todos los Tiempos”. Venezuela.',
+            '2015 · Exposição individual “Doradas Páginas Lusitanas”. Espinho, Portugal.',
+            '2014 · Exposição individual “Doradas Páginas Lusitanas”. Lisboa, Portugal.',
+            '2013 · Exposição individual “Colores que danzan... unos cuentan y otros riman”. Venezuela.',
+            '2012 · Exposição individual “Mujeres... Tradición Infinita”. Venezuela.',
+            '2008 · Exposição individual “Con las Tablas en el Corazón”. Venezuela.',
+            '2001 · Exposição individual “Dorados de Sol... Génesis de Pueblo”. Venezuela.',
+            '2000 · Exposição individual “Diseños de Piel”.',
+            '1995 · Exposição individual “Raíces, Tierra y Viento”. Venezuela.',
+          ],
+        },
+        {
+          title: 'Coleções selecionadas',
+          items: [
+            'Besharat Gallery, Atlanta, Georgia, USA.',
+            'Museu de Arte Latino-Americana de Los Angeles, MOLAA, USA.',
+            'Universidad Centro Occidental Lisandro Alvarado UCLA, Venezuela.',
+            'Museu Guayasamín, Quito, Equador.',
+            'Museu Gabriela Mistral, Chile.',
+            'Palácio da Independência de Portugal, Lisboa.',
+            'Coleções privadas na América e na Europa.',
+          ],
+        },
+      ],
     },
   },
 };

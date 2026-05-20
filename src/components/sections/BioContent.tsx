@@ -1,20 +1,25 @@
 'use client';
 
 import Image from 'next/image';
+import { ArrowLeft } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { Link } from '@/i18n/navigation';
 import { navItems } from '@/data/navigation';
-import { bioContent, BioSectionKey } from '@/data/bio';
+import { bioContent, BioLanguageContent, BioSectionKey } from '@/data/bio';
 import { LanguageSwitcher } from '@/components/layout/LanguageSwitcher';
+import { OldPhotosCarousel } from '@/components/sections/OldPhotosCarousel';
 
 const sectionKeys: BioSectionKey[] = ['biography', 'statement', 'cv'];
 
 export function BioContent() {
   const locale = useLocale();
   const tNav = useTranslations('nav');
+
   const content = bioContent[locale] ?? bioContent.es;
-  const [activeSection, setActiveSection] = useState<BioSectionKey>('biography');
+  const [activeSection, setActiveSection] = useState<BioSectionKey | null>(null);
+
+  const isReadingSection = activeSection !== null;
 
   return (
     <section className="paper-texture h-screen overflow-hidden text-[#1b1a18]">
@@ -24,18 +29,12 @@ export function BioContent() {
 
       {/* Desktop */}
       <div
-        className="
-          hidden
-          h-screen
-          min-h-0
-          grid-cols-[360px_230px_minmax(520px,720px)]
-          items-center
-          justify-center
-          gap-8
-          px-8
-          py-6
-          lg:grid
-        "
+        className={[
+          'hidden h-screen min-h-0 items-center justify-center px-8 py-6 lg:grid',
+          isReadingSection
+            ? 'grid-cols-[360px_minmax(760px,1040px)] gap-10'
+            : 'grid-cols-[360px_230px_minmax(560px,760px)] gap-8',
+        ].join(' ')}
       >
         <aside className="flex h-full min-h-0 flex-col justify-center">
           <Link
@@ -67,138 +66,97 @@ export function BioContent() {
           />
         </aside>
 
-        <nav className="flex flex-col gap-4">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="
-                sketch-nav
-                whitespace-nowrap
-                text-[1.65rem]
-                leading-none
-                text-black/75
-                transition
-                duration-300
-                hover:translate-x-2
-                hover:text-black
-              "
-            >
-              {tNav(item.labelKey)}
-            </Link>
-          ))}
-        </nav>
+        {!isReadingSection ? (
+          <nav className="flex flex-col gap-4">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="
+                  sketch-nav
+                  whitespace-nowrap
+                  text-[1.65rem]
+                  leading-none
+                  text-black/75
+                  transition
+                  duration-300
+                  hover:translate-x-2
+                  hover:text-black
+                "
+              >
+                {tNav(item.labelKey)}
+              </Link>
+            ))}
+          </nav>
+        ) : null}
 
         <main className="flex h-[calc(100vh-5rem)] min-h-0 flex-col gap-5">
           <p className="sketch-nav text-xl text-[#1f6f8b]">
             {content.pageLabel}
           </p>
 
-          <section className="grid min-h-0 flex-1 grid-cols-[220px_1fr] overflow-hidden rounded-[2rem] border border-dashed border-black/25 bg-white/25">
-            <div className="border-r border-dashed border-black/20 p-6">
-              <div className="flex flex-col gap-5">
-                {sectionKeys.map((key) => (
+          <section className="min-h-0 flex-1 overflow-hidden rounded-[2rem] border border-dashed border-black/25 bg-white/25">
+            {activeSection === null ? (
+              <div className="flex h-full items-start p-8">
+                <div className="flex flex-col gap-7 pt-2">
+                  {sectionKeys.map((key) => (
+                    <button
+                      key={key}
+                      type="button"
+                      onClick={() => setActiveSection(key)}
+                      className="
+                        sketch-nav
+                        text-left
+                        text-2xl
+                        leading-tight
+                        text-black/70
+                        transition
+                        hover:translate-x-2
+                        hover:text-black
+                      "
+                    >
+                      • {content.tabs[key]}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <article className="flex h-full min-h-0 flex-col">
+                <div className="flex items-center justify-between border-b border-dashed border-black/15 px-7 py-4">
                   <button
-                    key={key}
                     type="button"
-                    onClick={() => setActiveSection(key)}
-                    className={[
-                      'sketch-nav text-left text-xl leading-tight transition',
-                      activeSection === key
-                        ? 'text-black'
-                        : 'text-black/45 hover:text-black/75',
-                    ].join(' ')}
+                    onClick={() => setActiveSection(null)}
+                    className="
+                      sketch-nav
+                      flex
+                      items-center
+                      gap-2
+                      text-lg
+                      text-black/55
+                      transition
+                      hover:text-black
+                    "
                   >
-                    • {content.tabs[key]}
+                    <ArrowLeft size={20} />
+                    {content.backToBioMenu}
                   </button>
-                ))}
-              </div>
-            </div>
 
-            <article className="min-h-0 overflow-y-auto p-7 pr-9">
-              {activeSection === 'biography' ? (
-                <>
-                  <h1 className="display-title text-5xl leading-none text-black">
-                    {content.biography.title}
-                  </h1>
+                  <p className="sketch-nav text-lg text-black/35">
+                    {content.tabs[activeSection]}
+                  </p>
+                </div>
 
-                  <div className="mt-7 space-y-5 text-[1rem] leading-7 text-black/70">
-                    {content.biography.paragraphs.map((paragraph) => (
-                      <p key={paragraph}>{paragraph}</p>
-                    ))}
-                  </div>
-                </>
-              ) : null}
-
-              {activeSection === 'statement' ? (
-                <>
-                  <h1 className="display-title text-5xl leading-none text-black">
-                    {content.statement.title}
-                  </h1>
-
-                  <div className="mt-7 space-y-5 text-[1rem] leading-7 text-black/70">
-                    {content.statement.paragraphs.map((paragraph) => (
-                      <p key={paragraph}>{paragraph}</p>
-                    ))}
-                  </div>
-                </>
-              ) : null}
-
-              {activeSection === 'cv' ? (
-                <>
-                  <h1 className="display-title text-5xl leading-none text-black">
-                    {content.cv.title}
-                  </h1>
-
-                  <div className="mt-7 space-y-7">
-                    {content.cv.groups.map((group) => (
-                      <section key={group.title}>
-                        <h2 className="sketch-nav mb-3 text-2xl text-black">
-                          {group.title}
-                        </h2>
-
-                        <ul className="space-y-2 text-[0.98rem] leading-6 text-black/70">
-                          {group.items.map((item) => (
-                            <li key={item}>• {item}</li>
-                          ))}
-                        </ul>
-                      </section>
-                    ))}
-                  </div>
-                </>
-              ) : null}
-            </article>
+                <div className="min-h-0 flex-1 overflow-y-auto p-8 pr-10">
+                  <BioSectionContent
+                    activeSection={activeSection}
+                    content={content}
+                  />
+                </div>
+              </article>
+            )}
           </section>
 
-          <section className="h-[24vh] min-h-[150px] rounded-[2rem] border border-black/15 bg-white/25 p-6">
-            <div className="flex h-full items-center justify-between gap-6">
-              <button
-                type="button"
-                className="sketch-nav text-4xl text-black/45 transition hover:text-black"
-                aria-label="Previous old photo"
-              >
-                ‹
-              </button>
-
-              <div className="text-center">
-                <h2 className="sketch-nav text-4xl text-black/65">
-                  {content.oldPhotos.title}
-                </h2>
-
-                <p className="mt-3 max-w-md text-sm leading-6 text-black/45">
-                  {content.oldPhotos.subtitle}
-                </p>
-              </div>
-
-              <button
-                type="button"
-                className="sketch-nav text-4xl text-black/45 transition hover:text-black"
-                aria-label="Next old photo"
-              >
-                ›
-              </button>
-            </div>
-          </section>
+          <OldPhotosCarousel />
         </main>
       </div>
 
@@ -215,105 +173,129 @@ export function BioContent() {
           <LanguageSwitcher />
         </header>
 
-        <nav className="mt-8 flex flex-wrap gap-x-5 gap-y-3 border-y border-black/10 py-5">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="sketch-nav text-lg text-black/70"
-            >
-              {tNav(item.labelKey)}
-            </Link>
-          ))}
-        </nav>
+        {!isReadingSection ? (
+          <nav className="mt-8 flex flex-wrap gap-x-5 gap-y-3 border-y border-black/10 py-5">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="sketch-nav text-lg text-black/70"
+              >
+                {tNav(item.labelKey)}
+              </Link>
+            ))}
+          </nav>
+        ) : null}
 
         <main className="py-8">
           <p className="sketch-nav mb-5 text-xl text-[#1f6f8b]">
             {content.pageLabel}
           </p>
 
-          <div className="flex flex-wrap gap-3">
-            {sectionKeys.map((key) => (
-              <button
-                key={key}
-                type="button"
-                onClick={() => setActiveSection(key)}
-                className={[
-                  'rounded-full border px-4 py-2 text-sm transition',
-                  activeSection === key
-                    ? 'border-black bg-black text-white'
-                    : 'border-black/15 bg-white/40 text-black/65',
-                ].join(' ')}
-              >
-                {content.tabs[key]}
-              </button>
-            ))}
+          <section className="rounded-[2rem] border border-black/10 bg-white/30 p-6">
+            {activeSection === null ? (
+              <div className="flex flex-col gap-4">
+                {sectionKeys.map((key) => (
+                  <button
+                    key={key}
+                    type="button"
+                    onClick={() => setActiveSection(key)}
+                    className="sketch-nav text-left text-2xl text-black/70"
+                  >
+                    • {content.tabs[key]}
+                  </button>
+                ))}
+              </div>
+            ) : (
+              <>
+                <button
+                  type="button"
+                  onClick={() => setActiveSection(null)}
+                  className="sketch-nav mb-6 flex items-center gap-2 text-lg text-black/55"
+                >
+                  <ArrowLeft size={20} />
+                  {content.backToBioMenu}
+                </button>
+
+                <BioSectionContent
+                  activeSection={activeSection}
+                  content={content}
+                />
+              </>
+            )}
+          </section>
+
+          <div className="mt-6">
+            <OldPhotosCarousel compact />
           </div>
-
-          <section className="mt-6 rounded-[2rem] border border-black/10 bg-white/30 p-6">
-            {activeSection === 'biography' ? (
-              <>
-                <h1 className="display-title text-4xl leading-none text-black">
-                  {content.biography.title}
-                </h1>
-
-                <div className="mt-6 space-y-5 text-base leading-7 text-black/70">
-                  {content.biography.paragraphs.map((paragraph) => (
-                    <p key={paragraph}>{paragraph}</p>
-                  ))}
-                </div>
-              </>
-            ) : null}
-
-            {activeSection === 'statement' ? (
-              <>
-                <h1 className="display-title text-4xl leading-none text-black">
-                  {content.statement.title}
-                </h1>
-
-                <div className="mt-6 space-y-5 text-base leading-7 text-black/70">
-                  {content.statement.paragraphs.map((paragraph) => (
-                    <p key={paragraph}>{paragraph}</p>
-                  ))}
-                </div>
-              </>
-            ) : null}
-
-            {activeSection === 'cv' ? (
-              <>
-                <h1 className="display-title text-4xl leading-none text-black">
-                  {content.cv.title}
-                </h1>
-
-                <div className="mt-6 space-y-7">
-                  {content.cv.groups.map((group) => (
-                    <section key={group.title}>
-                      <h2 className="sketch-nav mb-3 text-2xl text-black">
-                        {group.title}
-                      </h2>
-
-                      <ul className="space-y-2 text-base leading-6 text-black/70">
-                        {group.items.map((item) => (
-                          <li key={item}>• {item}</li>
-                        ))}
-                      </ul>
-                    </section>
-                  ))}
-                </div>
-              </>
-            ) : null}
-          </section>
-
-          <section className="mt-6 rounded-[2rem] border border-black/10 bg-white/30 p-6 text-center">
-            <h2 className="sketch-nav text-3xl text-black/65">
-              {content.oldPhotos.title}
-            </h2>
-            <p className="mt-3 text-sm leading-6 text-black/45">
-              {content.oldPhotos.subtitle}
-            </p>
-          </section>
         </main>
       </div>
     </section>
+  );
+}
+
+type BioSectionContentProps = {
+  activeSection: BioSectionKey;
+  content: BioLanguageContent;
+};
+
+function BioSectionContent({
+  activeSection,
+  content,
+}: BioSectionContentProps) {
+  if (activeSection === 'biography') {
+    return (
+      <>
+        <h1 className="display-title text-5xl leading-none text-black max-lg:text-4xl">
+          {content.biography.title}
+        </h1>
+
+        <div className="mt-7 space-y-5 text-[1rem] leading-7 text-black/70 max-lg:text-base">
+          {content.biography.paragraphs.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+        </div>
+      </>
+    );
+  }
+
+  if (activeSection === 'statement') {
+    return (
+      <>
+        <h1 className="display-title text-5xl leading-none text-black max-lg:text-4xl">
+          {content.statement.title}
+        </h1>
+
+        <div className="mt-7 space-y-5 text-[1rem] leading-7 text-black/70 max-lg:text-base">
+          {content.statement.paragraphs.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+        </div>
+      </>
+    );
+  }
+
+  return (
+    <>
+      <h1 className="display-title text-5xl leading-none text-black max-lg:text-4xl">
+        {content.cv.title}
+      </h1>
+
+      <div className="mt-7 space-y-7">
+        {content.cv.groups.map((group) => (
+          <section key={group.title}>
+            <h2 className="sketch-nav mb-3 text-2xl text-black">
+              {group.title}
+            </h2>
+
+            <ul className="space-y-2 text-[0.98rem] leading-6 text-black/70 max-lg:text-base">
+              {group.items.map((item) => (
+                <li key={item}>• {item}</li>
+              ))}
+            </ul>
+          </section>
+        ))}
+      </div>
+    </>
   );
 }
