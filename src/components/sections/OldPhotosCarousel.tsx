@@ -7,9 +7,17 @@ import { oldBioPhotos } from '@/data/bioPhotos';
 
 type OldPhotosCarouselProps = {
   compact?: boolean;
+  title: string;
+  previousLabel: string;
+  nextLabel: string;
 };
 
-export function OldPhotosCarousel({ compact = false }: OldPhotosCarouselProps) {
+export function OldPhotosCarousel({
+  compact = false,
+  title,
+  previousLabel,
+  nextLabel,
+}: OldPhotosCarouselProps) {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const activePhoto = oldBioPhotos[activeIndex] ?? oldBioPhotos[0];
@@ -42,12 +50,12 @@ export function OldPhotosCarousel({ compact = false }: OldPhotosCarouselProps) {
           type="button"
           onClick={goPrevious}
           className="flex h-11 w-11 items-center justify-center rounded-full border border-black/10 bg-white/35 text-black/55 transition hover:bg-black hover:text-white"
-          aria-label="Previous old photo"
+          aria-label={previousLabel}
         >
           <ChevronLeft size={22} />
         </button>
 
-        <div className="grid h-full min-h-0 grid-cols-[1fr_120px] gap-4 max-sm:grid-cols-1">
+        <div className="grid h-full min-h-0 grid-cols-[1fr_140px] gap-4 max-sm:grid-cols-1">
           <div className="relative min-h-[130px] overflow-hidden rounded-[1.4rem] bg-black/5">
             <Image
               src={activePhoto.src}
@@ -60,7 +68,7 @@ export function OldPhotosCarousel({ compact = false }: OldPhotosCarouselProps) {
 
           <div className="flex min-h-0 flex-col justify-center max-sm:hidden">
             <h2 className="sketch-nav text-2xl leading-none text-black/70">
-              Fotos viejas
+              {title}
             </h2>
 
             <p className="mt-2 text-xs leading-5 text-black/45">
@@ -68,7 +76,7 @@ export function OldPhotosCarousel({ compact = false }: OldPhotosCarouselProps) {
             </p>
 
             <div className="mt-4 grid grid-cols-4 gap-1.5">
-              {oldBioPhotos.slice(0, 8).map((photo, index) => (
+              {oldBioPhotos.map((photo, index) => (
                 <button
                   key={photo.src}
                   type="button"
@@ -79,7 +87,7 @@ export function OldPhotosCarousel({ compact = false }: OldPhotosCarouselProps) {
                       ? 'border-black opacity-100'
                       : 'border-black/10 opacity-55 hover:opacity-100',
                   ].join(' ')}
-                  aria-label={`Open old photo ${index + 1}`}
+                  aria-label={`${title} ${index + 1}`}
                 >
                   <Image
                     src={photo.src}
@@ -98,7 +106,7 @@ export function OldPhotosCarousel({ compact = false }: OldPhotosCarouselProps) {
           type="button"
           onClick={goNext}
           className="flex h-11 w-11 items-center justify-center rounded-full border border-black/10 bg-white/35 text-black/55 transition hover:bg-black hover:text-white"
-          aria-label="Next old photo"
+          aria-label={nextLabel}
         >
           <ChevronRight size={22} />
         </button>

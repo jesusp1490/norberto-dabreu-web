@@ -7,6 +7,7 @@ type CvGroup = {
 
 export type BioLanguageContent = {
   pageLabel: string;
+  backToMainMenu: string;
   backToBioMenu: string;
   tabs: Record<BioSectionKey, string>;
   biography: {
@@ -21,11 +22,17 @@ export type BioLanguageContent = {
     title: string;
     groups: CvGroup[];
   };
+  oldPhotos: {
+    title: string;
+    previousLabel: string;
+    nextLabel: string;
+  };
 };
 
 export const bioContent: Record<string, BioLanguageContent> = {
   es: {
     pageLabel: 'Bio',
+    backToMainMenu: 'Inicio',
     backToBioMenu: 'Volver',
     tabs: {
       biography: 'Biografía',
@@ -84,8 +91,11 @@ export const bioContent: Record<string, BioLanguageContent> = {
         {
           title: 'Exposiciones seleccionadas',
           items: [
-            '2019 · Exposición individual “Los Colores de la Lusofonía”. Lisboa, Portugal.',
-            '2016 · Retrospectiva “Norberto D’Abreu… en todos los Tiempos”. Venezuela.',
+            '2019 · Exposición individual “Los Colores de la Lusofonía”. Galería Fernando Pessoa, Palacio de la Independencia de Portugal. Lisboa, Portugal.',
+            '2019 · Exposición colectiva “Galería Zeller”. Espinho, Portugal.',
+            '2018 · Exposición colectiva Galería “Espejos y Arte”. Caracas, Venezuela.',
+            '2017 · Exposición colectiva “Galería Zeller”. Espinho, Portugal.',
+            '2016 · Exposición individual “Norberto D’Abreu… en todos los Tiempos”. Retrospectiva. Ateneo de Cabudare, Venezuela.',
             '2015 · Exposición individual “Doradas Páginas Lusitanas”. Espinho, Portugal.',
             '2014 · Exposición individual “Doradas Páginas Lusitanas”. Lisboa, Portugal.',
             '2013 · Exposición individual “Colores que danzan... unos cuentan y otros riman”. Venezuela.',
@@ -104,16 +114,25 @@ export const bioContent: Record<string, BioLanguageContent> = {
             'Universidad Centro Occidental Lisandro Alvarado UCLA, Venezuela.',
             'Museo Guayasamín, Quito, Ecuador.',
             'Museo Gabriela Mistral, Chile.',
+            'Círculo Militar, Caracas, Venezuela.',
+            'Círculo Militar, Barquisimeto, Venezuela.',
+            'Colección Centro Portugués, Caracas, Venezuela.',
             'Palacio de la Independencia de Portugal, Lisboa.',
             'Colecciones privadas en América y Europa.',
           ],
         },
       ],
     },
+    oldPhotos: {
+      title: 'Fotos viejas',
+      previousLabel: 'Foto anterior',
+      nextLabel: 'Foto siguiente',
+    },
   },
 
   en: {
     pageLabel: 'Bio',
+    backToMainMenu: 'Home',
     backToBioMenu: 'Back',
     tabs: {
       biography: 'Biography',
@@ -172,8 +191,11 @@ export const bioContent: Record<string, BioLanguageContent> = {
         {
           title: 'Selected exhibitions',
           items: [
-            '2019 · Solo exhibition “Los Colores de la Lusofonía”. Lisbon, Portugal.',
-            '2016 · Retrospective “Norberto D’Abreu… en todos los Tiempos”. Venezuela.',
+            '2019 · Solo exhibition “Los Colores de la Lusofonía”. Fernando Pessoa Gallery, Palace of the Independence of Portugal. Lisbon, Portugal.',
+            '2019 · Group exhibition “Galería Zeller”. Espinho, Portugal.',
+            '2018 · Group exhibition at “Espejos y Arte” Gallery. Caracas, Venezuela.',
+            '2017 · Group exhibition “Galería Zeller”. Espinho, Portugal.',
+            '2016 · Solo exhibition “Norberto D’Abreu… en todos los Tiempos”. Retrospective. Ateneo de Cabudare, Venezuela.',
             '2015 · Solo exhibition “Doradas Páginas Lusitanas”. Espinho, Portugal.',
             '2014 · Solo exhibition “Doradas Páginas Lusitanas”. Lisbon, Portugal.',
             '2013 · Solo exhibition “Colores que danzan... unos cuentan y otros riman”. Venezuela.',
@@ -192,16 +214,25 @@ export const bioContent: Record<string, BioLanguageContent> = {
             'Universidad Centro Occidental Lisandro Alvarado UCLA, Venezuela.',
             'Guayasamín Museum, Quito, Ecuador.',
             'Gabriela Mistral Museum, Chile.',
+            'Círculo Militar, Caracas, Venezuela.',
+            'Círculo Militar, Barquisimeto, Venezuela.',
+            'Centro Portugués Collection, Caracas, Venezuela.',
             'Palace of the Independence of Portugal, Lisbon.',
             'Private collections in America and Europe.',
           ],
         },
       ],
     },
+    oldPhotos: {
+      title: 'Old photos',
+      previousLabel: 'Previous photo',
+      nextLabel: 'Next photo',
+    },
   },
 
   pt: {
     pageLabel: 'Bio',
+    backToMainMenu: 'Início',
     backToBioMenu: 'Voltar',
     tabs: {
       biography: 'Biografia',
@@ -260,8 +291,11 @@ export const bioContent: Record<string, BioLanguageContent> = {
         {
           title: 'Exposições selecionadas',
           items: [
-            '2019 · Exposição individual “Los Colores de la Lusofonía”. Lisboa, Portugal.',
-            '2016 · Retrospectiva “Norberto D’Abreu… en todos los Tiempos”. Venezuela.',
+            '2019 · Exposição individual “Los Colores de la Lusofonía”. Galeria Fernando Pessoa, Palácio da Independência de Portugal. Lisboa, Portugal.',
+            '2019 · Exposição coletiva “Galería Zeller”. Espinho, Portugal.',
+            '2018 · Exposição coletiva na Galeria “Espejos y Arte”. Caracas, Venezuela.',
+            '2017 · Exposição coletiva “Galería Zeller”. Espinho, Portugal.',
+            '2016 · Exposição individual “Norberto D’Abreu… en todos los Tiempos”. Retrospectiva. Ateneo de Cabudare, Venezuela.',
             '2015 · Exposição individual “Doradas Páginas Lusitanas”. Espinho, Portugal.',
             '2014 · Exposição individual “Doradas Páginas Lusitanas”. Lisboa, Portugal.',
             '2013 · Exposição individual “Colores que danzan... unos cuentan y otros riman”. Venezuela.',
@@ -280,11 +314,19 @@ export const bioContent: Record<string, BioLanguageContent> = {
             'Universidad Centro Occidental Lisandro Alvarado UCLA, Venezuela.',
             'Museu Guayasamín, Quito, Equador.',
             'Museu Gabriela Mistral, Chile.',
+            'Círculo Militar, Caracas, Venezuela.',
+            'Círculo Militar, Barquisimeto, Venezuela.',
+            'Coleção Centro Português, Caracas, Venezuela.',
             'Palácio da Independência de Portugal, Lisboa.',
             'Coleções privadas na América e na Europa.',
           ],
         },
       ],
+    },
+    oldPhotos: {
+      title: 'Fotos antigas',
+      previousLabel: 'Foto anterior',
+      nextLabel: 'Foto seguinte',
     },
   },
 };

@@ -2,10 +2,9 @@
 
 import Image from 'next/image';
 import { ArrowLeft } from 'lucide-react';
-import { useLocale, useTranslations } from 'next-intl';
+import { useLocale } from 'next-intl';
 import { useState } from 'react';
 import { Link } from '@/i18n/navigation';
-import { navItems } from '@/data/navigation';
 import { bioContent, BioLanguageContent, BioSectionKey } from '@/data/bio';
 import { LanguageSwitcher } from '@/components/layout/LanguageSwitcher';
 import { OldPhotosCarousel } from '@/components/sections/OldPhotosCarousel';
@@ -14,11 +13,9 @@ const sectionKeys: BioSectionKey[] = ['biography', 'statement', 'cv'];
 
 export function BioContent() {
   const locale = useLocale();
-  const tNav = useTranslations('nav');
-
   const content = bioContent[locale] ?? bioContent.es;
-  const [activeSection, setActiveSection] = useState<BioSectionKey | null>(null);
 
+  const [activeSection, setActiveSection] = useState<BioSectionKey | null>(null);
   const isReadingSection = activeSection !== null;
 
   return (
@@ -32,25 +29,17 @@ export function BioContent() {
         className={[
           'hidden h-screen min-h-0 items-center justify-center px-8 py-6 lg:grid',
           isReadingSection
-            ? 'grid-cols-[360px_minmax(760px,1040px)] gap-10'
-            : 'grid-cols-[360px_230px_minmax(560px,760px)] gap-8',
+            ? 'grid-cols-[320px_minmax(780px,1080px)] gap-10'
+            : 'grid-cols-[340px_minmax(760px,980px)] gap-12',
         ].join(' ')}
       >
-        <aside className="flex h-full min-h-0 flex-col justify-center">
+        <aside className="flex h-[calc(100vh-5rem)] min-h-0 flex-col justify-center">
           <Link
             href="/"
-            className="
-              display-title
-              mb-4
-              block
-              w-full
-              whitespace-nowrap
-              text-center
-              text-[2.25rem]
-              leading-[0.85]
-              tracking-[-0.045em]
-              text-black
-            "
+            className={[
+              'display-title mb-4 block w-full whitespace-nowrap text-left leading-[0.85] tracking-[-0.045em] text-black',
+              isReadingSection ? 'text-[1.95rem]' : 'text-[2.15rem]',
+            ].join(' ')}
           >
             Norberto D’Abreu
           </Link>
@@ -61,34 +50,15 @@ export function BioContent() {
             width={1200}
             height={1600}
             priority
-            sizes="360px"
-            className="block h-auto max-h-[calc(100vh-7rem)] w-full object-contain"
+            sizes="340px"
+            className={[
+              'block h-auto w-full object-contain object-left-top',
+              isReadingSection
+                ? 'max-h-[calc(100vh-8rem)]'
+                : 'max-h-[calc(100vh-7rem)]',
+            ].join(' ')}
           />
         </aside>
-
-        {!isReadingSection ? (
-          <nav className="flex flex-col gap-4">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="
-                  sketch-nav
-                  whitespace-nowrap
-                  text-[1.65rem]
-                  leading-none
-                  text-black/75
-                  transition
-                  duration-300
-                  hover:translate-x-2
-                  hover:text-black
-                "
-              >
-                {tNav(item.labelKey)}
-              </Link>
-            ))}
-          </nav>
-        ) : null}
 
         <main className="flex h-[calc(100vh-5rem)] min-h-0 flex-col gap-5">
           <p className="sketch-nav text-xl text-[#1f6f8b]">
@@ -97,45 +67,39 @@ export function BioContent() {
 
           <section className="min-h-0 flex-1 overflow-hidden rounded-[2rem] border border-dashed border-black/25 bg-white/25">
             {activeSection === null ? (
-              <div className="flex h-full items-start p-8">
-                <div className="flex flex-col gap-7 pt-2">
-                  {sectionKeys.map((key) => (
-                    <button
-                      key={key}
-                      type="button"
-                      onClick={() => setActiveSection(key)}
-                      className="
-                        sketch-nav
-                        text-left
-                        text-2xl
-                        leading-tight
-                        text-black/70
-                        transition
-                        hover:translate-x-2
-                        hover:text-black
-                      "
-                    >
-                      • {content.tabs[key]}
-                    </button>
-                  ))}
+              <div className="flex h-full min-h-0 flex-col">
+                <div className="border-b border-dashed border-black/15 px-8 py-5">
+                  <Link
+                    href="/"
+                    className="sketch-nav inline-flex items-center gap-2 text-lg text-black/50 transition hover:text-black"
+                  >
+                    <ArrowLeft size={19} />
+                    {content.backToMainMenu}
+                  </Link>
+                </div>
+
+                <div className="flex flex-1 items-start p-10">
+                  <div className="flex flex-col gap-7 pt-2">
+                    {sectionKeys.map((key) => (
+                      <button
+                        key={key}
+                        type="button"
+                        onClick={() => setActiveSection(key)}
+                        className="sketch-nav text-left text-3xl leading-tight text-black/70 transition hover:translate-x-2 hover:text-black"
+                      >
+                        • {content.tabs[key]}
+                      </button>
+                    ))}
+                  </div>
                 </div>
               </div>
             ) : (
               <article className="flex h-full min-h-0 flex-col">
-                <div className="flex items-center justify-between border-b border-dashed border-black/15 px-7 py-4">
+                <div className="flex items-center justify-between border-b border-dashed border-black/15 px-8 py-5">
                   <button
                     type="button"
                     onClick={() => setActiveSection(null)}
-                    className="
-                      sketch-nav
-                      flex
-                      items-center
-                      gap-2
-                      text-lg
-                      text-black/55
-                      transition
-                      hover:text-black
-                    "
+                    className="sketch-nav flex items-center gap-2 text-lg text-black/55 transition hover:text-black"
                   >
                     <ArrowLeft size={20} />
                     {content.backToBioMenu}
@@ -146,7 +110,7 @@ export function BioContent() {
                   </p>
                 </div>
 
-                <div className="min-h-0 flex-1 overflow-y-auto p-8 pr-10">
+                <div className="min-h-0 flex-1 overflow-y-auto p-10 pr-12">
                   <BioSectionContent
                     activeSection={activeSection}
                     content={content}
@@ -156,7 +120,11 @@ export function BioContent() {
             )}
           </section>
 
-          <OldPhotosCarousel />
+          <OldPhotosCarousel
+            title={content.oldPhotos.title}
+            previousLabel={content.oldPhotos.previousLabel}
+            nextLabel={content.oldPhotos.nextLabel}
+          />
         </main>
       </div>
 
@@ -173,20 +141,6 @@ export function BioContent() {
           <LanguageSwitcher />
         </header>
 
-        {!isReadingSection ? (
-          <nav className="mt-8 flex flex-wrap gap-x-5 gap-y-3 border-y border-black/10 py-5">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="sketch-nav text-lg text-black/70"
-              >
-                {tNav(item.labelKey)}
-              </Link>
-            ))}
-          </nav>
-        ) : null}
-
         <main className="py-8">
           <p className="sketch-nav mb-5 text-xl text-[#1f6f8b]">
             {content.pageLabel}
@@ -194,18 +148,28 @@ export function BioContent() {
 
           <section className="rounded-[2rem] border border-black/10 bg-white/30 p-6">
             {activeSection === null ? (
-              <div className="flex flex-col gap-4">
-                {sectionKeys.map((key) => (
-                  <button
-                    key={key}
-                    type="button"
-                    onClick={() => setActiveSection(key)}
-                    className="sketch-nav text-left text-2xl text-black/70"
-                  >
-                    • {content.tabs[key]}
-                  </button>
-                ))}
-              </div>
+              <>
+                <Link
+                  href="/"
+                  className="sketch-nav mb-7 inline-flex items-center gap-2 text-lg text-black/50"
+                >
+                  <ArrowLeft size={19} />
+                  {content.backToMainMenu}
+                </Link>
+
+                <div className="flex flex-col gap-4">
+                  {sectionKeys.map((key) => (
+                    <button
+                      key={key}
+                      type="button"
+                      onClick={() => setActiveSection(key)}
+                      className="sketch-nav text-left text-2xl text-black/70"
+                    >
+                      • {content.tabs[key]}
+                    </button>
+                  ))}
+                </div>
+              </>
             ) : (
               <>
                 <button
@@ -226,7 +190,12 @@ export function BioContent() {
           </section>
 
           <div className="mt-6">
-            <OldPhotosCarousel compact />
+            <OldPhotosCarousel
+              compact
+              title={content.oldPhotos.title}
+              previousLabel={content.oldPhotos.previousLabel}
+              nextLabel={content.oldPhotos.nextLabel}
+            />
           </div>
         </main>
       </div>
