@@ -16,7 +16,6 @@ export function BioContent() {
   const content = bioContent[locale] ?? bioContent.es;
 
   const [activeSection, setActiveSection] = useState<BioSectionKey | null>(null);
-  const isReadingSection = activeSection !== null;
 
   return (
     <section className="paper-texture h-screen overflow-hidden text-[#1b1a18]">
@@ -27,36 +26,38 @@ export function BioContent() {
       {/* Desktop */}
       <div
         className="
-            hidden
-            h-screen
-            min-h-0
-            grid-cols-[340px_minmax(760px,1100px)]
-            items-center
-            justify-center
-            gap-12
-            px-8
-            py-6
-            lg:grid
+          hidden
+          h-screen
+          min-h-0
+          items-center
+          justify-center
+          px-[clamp(2rem,4vw,5rem)]
+          py-[clamp(1.5rem,3vh,3rem)]
+          lg:grid
+          [--bio-artwork-width:clamp(340px,24vw,520px)]
+          [--bio-panel-width:clamp(760px,56vw,1280px)]
+          grid-cols-[var(--bio-artwork-width)_var(--bio-panel-width)]
+          gap-[clamp(2rem,4vw,5rem)]
         "
-        >
-        <aside className="flex h-[calc(100vh-5rem)] min-h-0 flex-col justify-center">
+      >
+        <aside className="flex h-[calc(100vh-5rem)] min-h-0 w-[var(--bio-artwork-width)] flex-col justify-center">
           <Link
             href="/"
             className="
-                display-title
-                mb-4
-                block
-                w-full
-                whitespace-nowrap
-                text-left
-                text-[2.15rem]
-                leading-[0.85]
-                tracking-[-0.045em]
-                text-black
+              display-title
+              mb-4
+              block
+              w-full
+              whitespace-nowrap
+              text-left
+              text-[clamp(2.15rem,2.6vw,3.25rem)]
+              leading-[0.85]
+              tracking-[-0.045em]
+              text-black
             "
-            >
+          >
             Norberto D’Abreu
-            </Link>
+          </Link>
 
           <Image
             src="/images/portada/portada-web.jpg"
@@ -64,16 +65,16 @@ export function BioContent() {
             width={1200}
             height={1600}
             priority
-            sizes="340px"
+            sizes="(min-width: 1536px) 520px, (min-width: 1024px) 24vw, 100vw"
             className="
-                block
-                h-auto
-                max-h-[calc(100vh-7rem)]
-                w-full
-                object-contain
-                object-left-top
+              block
+              h-auto
+              max-h-[calc(100vh-7rem)]
+              w-full
+              object-contain
+              object-left-top
             "
-            />
+          />
         </aside>
 
         <main className="flex h-[calc(100vh-4.5rem)] min-h-0 flex-col gap-4">
@@ -101,7 +102,16 @@ export function BioContent() {
                         key={key}
                         type="button"
                         onClick={() => setActiveSection(key)}
-                        className="sketch-nav text-left text-3xl leading-tight text-black/70 transition hover:translate-x-2 hover:text-black"
+                        className="
+                          sketch-nav
+                          text-left
+                          text-3xl
+                          leading-tight
+                          text-black/70
+                          transition
+                          hover:translate-x-2
+                          hover:text-black
+                        "
                       >
                         • {content.tabs[key]}
                       </button>
@@ -115,7 +125,16 @@ export function BioContent() {
                   <button
                     type="button"
                     onClick={() => setActiveSection(null)}
-                    className="sketch-nav flex items-center gap-2 text-lg text-black/55 transition hover:text-black"
+                    className="
+                      sketch-nav
+                      flex
+                      items-center
+                      gap-2
+                      text-lg
+                      text-black/55
+                      transition
+                      hover:text-black
+                    "
                   >
                     <ArrowLeft size={20} />
                     {content.backToBioMenu}
@@ -260,27 +279,109 @@ function BioSectionContent({
     );
   }
 
+  return <CvTimeline content={content} />;
+}
+
+type CvTimelineProps = {
+  content: BioLanguageContent;
+};
+
+function CvTimeline({ content }: CvTimelineProps) {
   return (
     <>
       <h1 className="display-title text-5xl leading-none text-black max-lg:text-4xl">
         {content.cv.title}
       </h1>
 
-      <div className="mt-7 space-y-7">
+      <div className="mt-9 space-y-11">
         {content.cv.groups.map((group) => (
-          <section key={group.title}>
-            <h2 className="sketch-nav mb-3 text-2xl text-black">
+          <section key={group.title} className="relative">
+            <h2 className="sketch-nav mb-6 text-2xl text-black">
               {group.title}
             </h2>
 
-            <ul className="space-y-2 text-[0.98rem] leading-6 text-black/70 max-lg:text-base">
-              {group.items.map((item) => (
-                <li key={item}>• {item}</li>
-              ))}
-            </ul>
+            <div className="relative space-y-5 border-l border-black/15 pl-7">
+              {group.items.map((item) => {
+                const year = getTimelineYear(item);
+                const text = getTimelineText(item);
+
+                return (
+                  <article
+                    key={item}
+                    className="
+                      group
+                      relative
+                      rounded-2xl
+                      border
+                      border-black/10
+                      bg-white/25
+                      px-5
+                      py-4
+                      transition
+                      hover:border-black/25
+                      hover:bg-white/45
+                    "
+                  >
+                    <span
+                      className="
+                        absolute
+                        -left-[2.1rem]
+                        top-5
+                        h-3
+                        w-3
+                        rounded-full
+                        border
+                        border-black/30
+                        bg-[#efeee8]
+                        transition
+                        group-hover:bg-black
+                      "
+                    />
+
+                    <div className="grid gap-3 sm:grid-cols-[8rem_1fr]">
+                      <div>
+                        {year ? (
+                          <p className="sketch-nav text-lg leading-none text-black">
+                            {year}
+                          </p>
+                        ) : (
+                          <p className="sketch-nav text-sm uppercase tracking-[0.22em] text-black/35">
+                            —
+                          </p>
+                        )}
+                      </div>
+
+                      <p className="text-[0.98rem] leading-7 text-black/68">
+                        {text}
+                      </p>
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
           </section>
         ))}
       </div>
     </>
   );
+}
+
+function getTimelineYear(item: string) {
+  const separator = item.includes('·') ? '·' : null;
+
+  if (!separator) {
+    return null;
+  }
+
+  return item.split(separator)[0]?.trim() ?? null;
+}
+
+function getTimelineText(item: string) {
+  const separator = item.includes('·') ? '·' : null;
+
+  if (!separator) {
+    return item;
+  }
+
+  return item.split(separator).slice(1).join(separator).trim();
 }
