@@ -1,15 +1,5 @@
-import { useTranslations } from 'next-intl';
-import { PageIntro } from '@/components/ui/PageIntro';
+import { BioContent } from '@/components/sections/BioContent';
 
 export default function BioPage() {
-  const t = useTranslations('pages');
-  const nav = useTranslations('nav');
-
-  return (
-    <PageIntro
-      eyebrow={nav('bio')}
-      title={t('bioTitle')}
-      description={t('bioDescription')}
-    />
-  );
+  return <BioContent />;
 }
