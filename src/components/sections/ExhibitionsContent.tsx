@@ -196,12 +196,6 @@ function ExhibitionsList({
                   <span className="mt-2 block text-sm leading-6 text-black/45">
                     {localized.location ?? localized.description}
                   </span>
-
-                  {localized.date ? (
-                    <span className="mt-1 block text-xs uppercase tracking-[0.22em] text-black/35">
-                      {localized.date}
-                    </span>
-                  ) : null}
                 </span>
 
                 <span className="sketch-nav justify-self-end text-sm text-black/25 transition group-hover:text-black/60 max-md:hidden">
@@ -304,10 +298,10 @@ function FullExhibitionDetail({
               grid
               min-h-0
               flex-1
-              grid-cols-[minmax(270px,360px)_minmax(0,1fr)]
-              gap-[clamp(1.25rem,2vw,2rem)]
+              grid-cols-[minmax(260px,340px)_minmax(0,1fr)]
+              gap-[clamp(1rem,2vw,2rem)]
               overflow-hidden
-              p-[clamp(1rem,2vh,2rem)]
+              p-[clamp(0.9rem,2vh,1.5rem)]
               max-xl:grid-cols-1
               max-xl:overflow-y-auto
             "
@@ -319,20 +313,25 @@ function FullExhibitionDetail({
               galleryCount={galleryImages.length}
             />
 
-            <section className="flex min-h-0 flex-col">
+            <section className="flex h-full min-h-0 flex-col max-xl:h-auto">
               {hasImages && activeImage ? (
                 <>
                   <div
                     className="
                       relative
-                      h-[clamp(300px,42vh,620px)]
-                      shrink-0
+                      min-h-[420px]
+                      flex-1
                       overflow-hidden
                       rounded-[2rem]
                       border
                       border-black/10
                       bg-black/5
-                      [@media_(max-height:900px)]:h-[clamp(260px,38vh,390px)]
+                      max-xl:h-[min(72vh,760px)]
+                      max-xl:min-h-[460px]
+                      max-xl:flex-none
+                      max-md:h-[68vh]
+                      max-md:min-h-[360px]
+                      [@media_(max-height:900px)]:min-h-[340px]
                     "
                   >
                     <button
@@ -345,8 +344,9 @@ function FullExhibitionDetail({
                         src={activeImage.src}
                         alt={activeImage.alt}
                         fill
-                        sizes="(min-width: 1280px) 900px, 100vw"
-                        className="object-contain p-5 transition duration-700 group-hover:scale-[1.01]"
+                        sizes="(min-width: 1280px) 65vw, 100vw"
+                        className="object-contain p-3 transition duration-700 group-hover:scale-[1.01] max-md:p-2"
+                        priority
                       />
 
                       <div className="absolute bottom-5 left-6 rounded-full bg-white/80 px-4 py-2 text-xs uppercase tracking-[0.22em] text-black/65 backdrop-blur-sm">
@@ -380,7 +380,7 @@ function FullExhibitionDetail({
                   <div className="mt-4 shrink-0">
                     <div className="mb-3 flex items-center justify-between gap-4">
                       <p className="sketch-nav text-sm uppercase tracking-[0.24em] text-black/35">
-                        {content.catalogueLabel}
+                        {localized.title}
                       </p>
 
                       <p className="text-sm text-black/35">
@@ -400,7 +400,7 @@ function FullExhibitionDetail({
                               ? 'border-black opacity-100'
                               : 'border-black/10 opacity-55 hover:opacity-100',
                           ].join(' ')}
-                          aria-label={`${content.catalogueLabel} ${index + 1}`}
+                          aria-label={`${localized.title} ${index + 1}`}
                         >
                           <Image
                             src={image.src}
@@ -433,7 +433,7 @@ function FullExhibitionDetail({
       </main>
 
       {isLightboxOpen && activeImage ? (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-6 backdrop-blur-sm">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-4 backdrop-blur-sm">
           <button
             type="button"
             onClick={onCloseLightbox}
@@ -447,19 +447,19 @@ function FullExhibitionDetail({
             <button
               type="button"
               onClick={onPreviousImage}
-              className="absolute left-6 top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-black transition hover:bg-white"
+              className="absolute left-6 top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-black transition hover:bg-white max-md:left-3"
               aria-label={content.previousLabel}
             >
               <ChevronLeft size={26} />
             </button>
           ) : null}
 
-          <div className="relative h-[88vh] w-[86vw]">
+          <div className="relative h-[92vh] w-[94vw]">
             <Image
               src={activeImage.src}
               alt={activeImage.alt}
               fill
-              sizes="86vw"
+              sizes="94vw"
               className="object-contain"
               priority
             />
@@ -469,7 +469,7 @@ function FullExhibitionDetail({
             <button
               type="button"
               onClick={onNextImage}
-              className="absolute right-6 top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-black transition hover:bg-white"
+              className="absolute right-6 top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-black transition hover:bg-white max-md:right-3"
               aria-label={content.nextLabel}
             >
               <ChevronRight size={26} />
@@ -500,9 +500,7 @@ function ExhibitionDetailInfo({
 }: ExhibitionDetailInfoProps) {
   return (
     <aside className="min-h-0 overflow-y-auto pr-2 max-xl:overflow-visible">
-      <p className="sketch-nav text-xl text-[#1f6f8b]">
-        {exhibition.year}
-      </p>
+      <p className="sketch-nav text-xl text-[#1f6f8b]">{exhibition.year}</p>
 
       <h1
         className="
@@ -516,12 +514,6 @@ function ExhibitionDetailInfo({
       >
         {localized.title}
       </h1>
-
-      {localized.date ? (
-        <p className="sketch-nav mt-5 text-lg text-black/45 [@media_(max-height:900px)]:mt-4 [@media_(max-height:900px)]:text-base">
-          {localized.date}
-        </p>
-      ) : null}
 
       {localized.location ? (
         <p className="mt-4 text-sm leading-6 text-black/50 [@media_(max-height:900px)]:mt-3 [@media_(max-height:900px)]:leading-5">
@@ -538,9 +530,21 @@ function ExhibitionDetailInfo({
           {content.catalogueLabel}
         </p>
 
-        <p className="mt-3 text-sm leading-6 text-black/55">
-          {content.imageCounterLabel}: {galleryCount}
-        </p>
+        {exhibition.catalogImage ? (
+          <div className="relative mt-4 aspect-[3/4] w-full overflow-hidden rounded-[1.1rem] border border-black/10 bg-black/5">
+            <Image
+              src={exhibition.catalogImage.src}
+              alt={exhibition.catalogImage.alt}
+              fill
+              sizes="340px"
+              className="object-contain p-2"
+            />
+          </div>
+        ) : (
+          <p className="mt-3 text-sm leading-6 text-black/55">
+            {galleryCount} imágenes disponibles en la galería.
+          </p>
+        )}
       </div>
     </aside>
   );
