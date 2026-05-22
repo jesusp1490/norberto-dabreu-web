@@ -133,7 +133,36 @@ export const exhibitions: ExhibitionItem[] = [
             location: "Galeria Quipus, Barquisimeto, Venezuela",
             date: "2000",
         },
-        images: [],
+        images: [
+            {
+                src: '/images/exhibiciones/disenos-de-piel/disenos-de-piel-01.webp',
+                alt: 'Diseños de Piel - obra 1',
+            },
+            {
+                src: '/images/exhibiciones/disenos-de-piel/disenos-de-piel-02.webp',
+                alt: 'Diseños de Piel - obra 2',
+            },
+            {
+                src: '/images/exhibiciones/disenos-de-piel/disenos-de-piel-03.webp',
+                alt: 'Diseños de Piel - obra 3',
+            },
+            {
+                src: '/images/exhibiciones/disenos-de-piel/disenos-de-piel-04.webp',
+                alt: 'Diseños de Piel - obra 4',
+            },
+            {
+                src: '/images/exhibiciones/disenos-de-piel/disenos-de-piel-05.webp',
+                alt: 'Diseños de Piel - obra 5',
+            },
+            {
+                src: '/images/exhibiciones/disenos-de-piel/disenos-de-piel-06.webp',
+                alt: 'Diseños de Piel - obra 6',
+            },
+            {
+                src: '/images/exhibiciones/disenos-de-piel/disenos-de-piel-07.webp',
+                alt: 'Diseños de Piel - obra 7',
+            },
+        ],
     },
     {
         slug: "dorados-de-sol",
@@ -167,7 +196,48 @@ export const exhibitions: ExhibitionItem[] = [
                 "Universidad Centro Occidental Lisandro Alvarado. Galeria Universitária Rafael Monasterios, Barquisimeto, Venezuela",
             date: "Junho - Julho 2001",
         },
-        images: [],
+        images: [
+            {
+                src: '/images/exhibiciones/dorados-de-sol/dorados-de-sol-01.webp',
+                alt: 'Dorados de Sol - obra 1',
+            },
+            {
+                src: '/images/exhibiciones/dorados-de-sol/dorados-de-sol-02.webp',
+                alt: 'Dorados de Sol - obra 2',
+            },
+            {
+                src: '/images/exhibiciones/dorados-de-sol/dorados-de-sol-03.webp',
+                alt: 'Dorados de Sol - obra 3',
+            },
+            {
+                src: '/images/exhibiciones/dorados-de-sol/dorados-de-sol-04.webp',
+                alt: 'Dorados de Sol - obra 4',
+            },
+            {
+                src: '/images/exhibiciones/dorados-de-sol/dorados-de-sol-05.webp',
+                alt: 'Dorados de Sol - obra 5',
+            },
+            {
+                src: '/images/exhibiciones/dorados-de-sol/dorados-de-sol-06.webp',
+                alt: 'Dorados de Sol - obra 6',
+            },
+            {
+                src: '/images/exhibiciones/dorados-de-sol/dorados-de-sol-07.webp',
+                alt: 'Dorados de Sol - obra 7',
+            },
+            {
+                src: '/images/exhibiciones/dorados-de-sol/dorados-de-sol-08.webp',
+                alt: 'Dorados de Sol - obra 8',
+            },
+            {
+                src: '/images/exhibiciones/dorados-de-sol/dorados-de-sol-09.webp',
+                alt: 'Dorados de Sol - obra 9',
+            },
+            {
+                src: '/images/exhibiciones/dorados-de-sol/dorados-de-sol-10.webp',
+                alt: 'Dorados de Sol - obra 10',
+            },
+        ],
     },
     {
         slug: "con-las-tablas-en-el-corazon",
@@ -468,7 +538,52 @@ export const exhibitions: ExhibitionItem[] = [
                 "Palácio da Independência / Sociedade Histórica da Independência de Portugal. Galeria Fernando Pessoa, Lisboa, Portugal",
             date: "Dezembro 2014",
         },
-        images: [],
+        images: [
+            {
+                src: '/images/exhibiciones/doradas-paginas-lusitanas/doradas-paginas-lusitanas-01.webp',
+                alt: 'Doradas Páginas Lusitanas - obra 1',
+            },
+            {
+                src: '/images/exhibiciones/doradas-paginas-lusitanas/doradas-paginas-lusitanas-02.webp',
+                alt: 'Doradas Páginas Lusitanas - obra 2',
+            },
+            {
+                src: '/images/exhibiciones/doradas-paginas-lusitanas/doradas-paginas-lusitanas-03.webp',
+                alt: 'Doradas Páginas Lusitanas - obra 3',
+            },
+            {
+                src: '/images/exhibiciones/doradas-paginas-lusitanas/doradas-paginas-lusitanas-04.webp',
+                alt: 'Doradas Páginas Lusitanas - obra 4',
+            },
+            {
+                src: '/images/exhibiciones/doradas-paginas-lusitanas/doradas-paginas-lusitanas-05.webp',
+                alt: 'Doradas Páginas Lusitanas - obra 5',
+            },
+            {
+                src: '/images/exhibiciones/doradas-paginas-lusitanas/doradas-paginas-lusitanas-06.webp',
+                alt: 'Doradas Páginas Lusitanas - obra 6',
+            },
+            {
+                src: '/images/exhibiciones/doradas-paginas-lusitanas/doradas-paginas-lusitanas-07.webp',
+                alt: 'Doradas Páginas Lusitanas - obra 7',
+            },
+            {
+                src: '/images/exhibiciones/doradas-paginas-lusitanas/doradas-paginas-lusitanas-08.webp',
+                alt: 'Doradas Páginas Lusitanas - obra 8',
+            },
+            {
+                src: '/images/exhibiciones/doradas-paginas-lusitanas/doradas-paginas-lusitanas-09.webp',
+                alt: 'Doradas Páginas Lusitanas - obra 9',
+            },
+            {
+                src: '/images/exhibiciones/doradas-paginas-lusitanas/doradas-paginas-lusitanas-10.webp',
+                alt: 'Doradas Páginas Lusitanas - obra 10',
+            },
+            {
+                src: '/images/exhibiciones/doradas-paginas-lusitanas/doradas-paginas-lusitanas-11.webp',
+                alt: 'Doradas Páginas Lusitanas - obra 11',
+            },
+        ],
     },
     {
         slug: "retrospectiva",
@@ -499,7 +614,168 @@ export const exhibitions: ExhibitionItem[] = [
             location: "Sala de Arte Jorge Arteaga, Ateneo de Cabudare, Venezuela",
             date: "Março 2016",
         },
-        images: [],
+        images: [
+            {
+                src: '/images/exhibiciones/retrospectiva/retrospectiva-2016-01.webp',
+                alt: 'Retrospectiva 2016 - obra 1',
+            },
+            {
+                src: '/images/exhibiciones/retrospectiva/retrospectiva-2016-02.webp',
+                alt: 'Retrospectiva 2016 - obra 2',
+            },
+            {
+                src: '/images/exhibiciones/retrospectiva/retrospectiva-2016-03.webp',
+                alt: 'Retrospectiva 2016 - obra 3',
+            },
+            {
+                src: '/images/exhibiciones/retrospectiva/retrospectiva-2016-04.webp',
+                alt: 'Retrospectiva 2016 - obra 4',
+            },
+            {
+                src: '/images/exhibiciones/retrospectiva/retrospectiva-2016-05.webp',
+                alt: 'Retrospectiva 2016 - obra 5',
+            },
+            {
+                src: '/images/exhibiciones/retrospectiva/retrospectiva-2016-06.webp',
+                alt: 'Retrospectiva 2016 - obra 6',
+            },
+            {
+                src: '/images/exhibiciones/retrospectiva/retrospectiva-2016-07.webp',
+                alt: 'Retrospectiva 2016 - obra 7',
+            },
+            {
+                src: '/images/exhibiciones/retrospectiva/retrospectiva-2016-08.webp',
+                alt: 'Retrospectiva 2016 - obra 8',
+            },
+            {
+                src: '/images/exhibiciones/retrospectiva/retrospectiva-2016-09.webp',
+                alt: 'Retrospectiva 2016 - obra 9',
+            },
+            {
+                src: '/images/exhibiciones/retrospectiva/retrospectiva-2016-10.webp',
+                alt: 'Retrospectiva 2016 - obra 10',
+            },
+            {
+                src: '/images/exhibiciones/retrospectiva/retrospectiva-2016-11.webp',
+                alt: 'Retrospectiva 2016 - obra 11',
+            },
+            {
+                src: '/images/exhibiciones/retrospectiva/retrospectiva-2016-12.webp',
+                alt: 'Retrospectiva 2016 - obra 12',
+            },
+            {
+                src: '/images/exhibiciones/retrospectiva/retrospectiva-2016-13.webp',
+                alt: 'Retrospectiva 2016 - obra 13',
+            },
+            {
+                src: '/images/exhibiciones/retrospectiva/retrospectiva-2016-14.webp',
+                alt: 'Retrospectiva 2016 - obra 14',
+            },
+            {
+                src: '/images/exhibiciones/retrospectiva/retrospectiva-2016-15.webp',
+                alt: 'Retrospectiva 2016 - obra 15',
+            },
+            {
+                src: '/images/exhibiciones/retrospectiva/retrospectiva-2016-16.webp',
+                alt: 'Retrospectiva 2016 - obra 16',
+            },
+            {
+                src: '/images/exhibiciones/retrospectiva/retrospectiva-2016-17.webp',
+                alt: 'Retrospectiva 2016 - obra 17',
+            },
+            {
+                src: '/images/exhibiciones/retrospectiva/retrospectiva-2016-18.webp',
+                alt: 'Retrospectiva 2016 - obra 18',
+            },
+            {
+                src: '/images/exhibiciones/retrospectiva/retrospectiva-2016-19.webp',
+                alt: 'Retrospectiva 2016 - obra 19',
+            },
+            {
+                src: '/images/exhibiciones/retrospectiva/retrospectiva-2016-20.webp',
+                alt: 'Retrospectiva 2016 - obra 20',
+            },
+            {
+                src: '/images/exhibiciones/retrospectiva/retrospectiva-2016-21.webp',
+                alt: 'Retrospectiva 2016 - obra 21',
+            },
+            {
+                src: '/images/exhibiciones/retrospectiva/retrospectiva-2016-22.webp',
+                alt: 'Retrospectiva 2016 - obra 22',
+            },
+            {
+                src: '/images/exhibiciones/retrospectiva/retrospectiva-2016-23.webp',
+                alt: 'Retrospectiva 2016 - obra 23',
+            },
+            {
+                src: '/images/exhibiciones/retrospectiva/retrospectiva-2016-24.webp',
+                alt: 'Retrospectiva 2016 - obra 24',
+            },
+            {
+                src: '/images/exhibiciones/retrospectiva/retrospectiva-2016-25.webp',
+                alt: 'Retrospectiva 2016 - obra 25',
+            },
+            {
+                src: '/images/exhibiciones/retrospectiva/retrospectiva-2016-26.webp',
+                alt: 'Retrospectiva 2016 - obra 26',
+            },
+            {
+                src: '/images/exhibiciones/retrospectiva/retrospectiva-2016-27.webp',
+                alt: 'Retrospectiva 2016 - obra 27',
+            },
+            {
+                src: '/images/exhibiciones/retrospectiva/retrospectiva-2016-28.webp',
+                alt: 'Retrospectiva 2016 - obra 28',
+            },
+            {
+                src: '/images/exhibiciones/retrospectiva/retrospectiva-2016-29.webp',
+                alt: 'Retrospectiva 2016 - obra 29',
+            },
+            {
+                src: '/images/exhibiciones/retrospectiva/retrospectiva-2016-30.webp',
+                alt: 'Retrospectiva 2016 - obra 30',
+            },
+            {
+                src: '/images/exhibiciones/retrospectiva/retrospectiva-2016-31.webp',
+                alt: 'Retrospectiva 2016 - obra 31',
+            },
+            {
+                src: '/images/exhibiciones/retrospectiva/retrospectiva-2016-32.webp',
+                alt: 'Retrospectiva 2016 - obra 32',
+            },
+            {
+                src: '/images/exhibiciones/retrospectiva/retrospectiva-2016-33.webp',
+                alt: 'Retrospectiva 2016 - obra 33',
+            },
+            {
+                src: '/images/exhibiciones/retrospectiva/retrospectiva-2016-34.webp',
+                alt: 'Retrospectiva 2016 - obra 34',
+            },
+            {
+                src: '/images/exhibiciones/retrospectiva/retrospectiva-2016-35.webp',
+                alt: 'Retrospectiva 2016 - obra 35',
+            },
+            {
+                src: '/images/exhibiciones/retrospectiva/retrospectiva-2016-36.webp',
+                alt: 'Retrospectiva 2016 - obra 36',
+            },
+            {
+                src: '/images/exhibiciones/retrospectiva/retrospectiva-2016-37.webp',
+                alt: 'Retrospectiva 2016 - obra 37',
+            },
+            {
+                src: '/images/exhibiciones/retrospectiva/retrospectiva-2016-38.webp',
+                alt: 'Retrospectiva 2016 - obra 38',
+            },
+            {
+                src: '/images/exhibiciones/retrospectiva/retrospectiva-2016-39.webp',
+                alt: 'Retrospectiva 2016 - obra 39',
+            },
+            {
+                src: '/images/exhibiciones/retrospectiva/retrospectiva-2016-40.webp',
+                alt: 'Retrospectiva 2016 - obra 40',
+            },
+        ],
     },
     {
         slug: "los-colores-de-la-lusofonia",
@@ -591,7 +867,200 @@ export const exhibitions: ExhibitionItem[] = [
             description:
                 "Arquivo aberto para outras obras, desenhos, cerâmicas, peças de moda e vários projetos do artista.",
         },
-        images: [],
+        images: [
+            {
+                src: '/images/exhibiciones/miscelaneos/miscelaneos-01.webp',
+                alt: 'Miscelaneos - obra 1',
+            },
+            {
+                src: '/images/exhibiciones/miscelaneos/miscelaneos-02.webp',
+                alt: 'Miscelaneos - obra 2',
+            },
+            {
+                src: '/images/exhibiciones/miscelaneos/miscelaneos-03.webp',
+                alt: 'Miscelaneos - obra 3',
+            },
+            {
+                src: '/images/exhibiciones/miscelaneos/miscelaneos-04.webp',
+                alt: 'Miscelaneos - obra 4',
+            },
+            {
+                src: '/images/exhibiciones/miscelaneos/miscelaneos-05.webp',
+                alt: 'Miscelaneos - obra 5',
+            },
+            {
+                src: '/images/exhibiciones/miscelaneos/miscelaneos-06.webp',
+                alt: 'Miscelaneos - obra 6',
+            },
+            {
+                src: '/images/exhibiciones/miscelaneos/miscelaneos-07.webp',
+                alt: 'Miscelaneos - obra 7',
+            },
+            {
+                src: '/images/exhibiciones/miscelaneos/miscelaneos-08.webp',
+                alt: 'Miscelaneos - obra 8',
+            },
+            {
+                src: '/images/exhibiciones/miscelaneos/miscelaneos-09.webp',
+                alt: 'Miscelaneos - obra 9',
+            },
+            {
+                src: '/images/exhibiciones/miscelaneos/miscelaneos-10.webp',
+                alt: 'Miscelaneos - obra 10',
+            },
+            {
+                src: '/images/exhibiciones/miscelaneos/miscelaneos-11.webp',
+                alt: 'Miscelaneos - obra 11',
+            },
+            {
+                src: '/images/exhibiciones/miscelaneos/miscelaneos-12.webp',
+                alt: 'Miscelaneos - obra 12',
+            },
+            {
+                src: '/images/exhibiciones/miscelaneos/miscelaneos-13.webp',
+                alt: 'Miscelaneos - obra 13',
+            },
+            {
+                src: '/images/exhibiciones/miscelaneos/miscelaneos-14.webp',
+                alt: 'Miscelaneos - obra 14',
+            },
+            {
+                src: '/images/exhibiciones/miscelaneos/miscelaneos-15.webp',
+                alt: 'Miscelaneos - obra 15',
+            },
+            {
+                src: '/images/exhibiciones/miscelaneos/miscelaneos-16.webp',
+                alt: 'Miscelaneos - obra 16',
+            },
+            {
+                src: '/images/exhibiciones/miscelaneos/miscelaneos-17.webp',
+                alt: 'Miscelaneos - obra 17',
+            },
+            {
+                src: '/images/exhibiciones/miscelaneos/miscelaneos-18.webp',
+                alt: 'Miscelaneos - obra 18',
+            },
+            {
+                src: '/images/exhibiciones/miscelaneos/miscelaneos-19.webp',
+                alt: 'Miscelaneos - obra 19',
+            },
+            {
+                src: '/images/exhibiciones/miscelaneos/miscelaneos-20.webp',
+                alt: 'Miscelaneos - obra 20',
+            },
+            {
+                src: '/images/exhibiciones/miscelaneos/miscelaneos-21.webp',
+                alt: 'Miscelaneos - obra 21',
+            },
+            {
+                src: '/images/exhibiciones/miscelaneos/miscelaneos-22.webp',
+                alt: 'Miscelaneos - obra 22',
+            },
+            {
+                src: '/images/exhibiciones/miscelaneos/miscelaneos-23.webp',
+                alt: 'Miscelaneos - obra 23',
+            },
+            {
+                src: '/images/exhibiciones/miscelaneos/miscelaneos-24.webp',
+                alt: 'Miscelaneos - obra 24',
+            },
+            {
+                src: '/images/exhibiciones/miscelaneos/miscelaneos-25.webp',
+                alt: 'Miscelaneos - obra 25',
+            },
+            {
+                src: '/images/exhibiciones/miscelaneos/miscelaneos-26.webp',
+                alt: 'Miscelaneos - obra 26',
+            },
+            {
+                src: '/images/exhibiciones/miscelaneos/miscelaneos-27.webp',
+                alt: 'Miscelaneos - obra 27',
+            },
+            {
+                src: '/images/exhibiciones/miscelaneos/miscelaneos-28.webp',
+                alt: 'Miscelaneos - obra 28',
+            },
+            {
+                src: '/images/exhibiciones/miscelaneos/miscelaneos-29.webp',
+                alt: 'Miscelaneos - obra 29',
+            },
+            {
+                src: '/images/exhibiciones/miscelaneos/miscelaneos-30.webp',
+                alt: 'Miscelaneos - obra 30',
+            },
+            {
+                src: '/images/exhibiciones/miscelaneos/miscelaneos-31.webp',
+                alt: 'Miscelaneos - obra 31',
+            },
+            {
+                src: '/images/exhibiciones/miscelaneos/miscelaneos-32.webp',
+                alt: 'Miscelaneos - obra 32',
+            },
+            {
+                src: '/images/exhibiciones/miscelaneos/miscelaneos-33.webp',
+                alt: 'Miscelaneos - obra 33',
+            },
+            {
+                src: '/images/exhibiciones/miscelaneos/miscelaneos-34.webp',
+                alt: 'Miscelaneos - obra 34',
+            },
+            {
+                src: '/images/exhibiciones/miscelaneos/miscelaneos-35.webp',
+                alt: 'Miscelaneos - obra 35',
+            },
+            {
+                src: '/images/exhibiciones/miscelaneos/miscelaneos-36.webp',
+                alt: 'Miscelaneos - obra 36',
+            },
+            {
+                src: '/images/exhibiciones/miscelaneos/miscelaneos-37.webp',
+                alt: 'Miscelaneos - obra 37',
+            },
+            {
+                src: '/images/exhibiciones/miscelaneos/miscelaneos-38.webp',
+                alt: 'Miscelaneos - obra 38',
+            },
+            {
+                src: '/images/exhibiciones/miscelaneos/miscelaneos-39.webp',
+                alt: 'Miscelaneos - obra 39',
+            },
+            {
+                src: '/images/exhibiciones/miscelaneos/miscelaneos-40.webp',
+                alt: 'Miscelaneos - obra 40',
+            },
+            {
+                src: '/images/exhibiciones/miscelaneos/miscelaneos-41.webp',
+                alt: 'Miscelaneos - obra 41',
+            },
+            {
+                src: '/images/exhibiciones/miscelaneos/miscelaneos-42.webp',
+                alt: 'Miscelaneos - obra 42',
+            },
+            {
+                src: '/images/exhibiciones/miscelaneos/miscelaneos-43.webp',
+                alt: 'Miscelaneos - obra 43',
+            },
+            {
+                src: '/images/exhibiciones/miscelaneos/miscelaneos-44.webp',
+                alt: 'Miscelaneos - obra 44',
+            },
+            {
+                src: '/images/exhibiciones/miscelaneos/miscelaneos-45.webp',
+                alt: 'Miscelaneos - obra 45',
+            },
+            {
+                src: '/images/exhibiciones/miscelaneos/miscelaneos-46.webp',
+                alt: 'Miscelaneos - obra 46',
+            },
+            {
+                src: '/images/exhibiciones/miscelaneos/miscelaneos-47.webp',
+                alt: 'Miscelaneos - obra 47',
+            },
+            {
+                src: '/images/exhibiciones/miscelaneos/miscelaneos-48.webp',
+                alt: 'Miscelaneos - obra 48',
+            },
+        ],
     },
 ];
 
