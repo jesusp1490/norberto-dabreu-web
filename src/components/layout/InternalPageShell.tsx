@@ -19,7 +19,56 @@ export function InternalPageShell({
   sideImagePosition = 'center center',
 }: InternalPageShellProps) {
   return (
-    <section className="paper-texture flex h-screen flex-col overflow-hidden text-[#1b1a18]">
+    <section
+      className="
+        paper-texture
+        flex
+        h-screen
+        flex-col
+        overflow-hidden
+        text-[#1b1a18]
+        [--internal-artwork-width:clamp(380px,32vw,700px)]
+      "
+    >
+      {/* Desktop header */}
+      <header
+        className="
+          relative
+          z-30
+          hidden
+          h-[clamp(4.5rem,7vh,6rem)]
+          shrink-0
+          grid-cols-[var(--internal-artwork-width)_minmax(0,1fr)]
+          items-center
+          border-b
+          border-black/10
+          lg:grid
+        "
+      >
+        <Link
+          href="/"
+          className="
+            display-title
+            block
+            w-full
+            whitespace-nowrap
+            text-center
+            text-[clamp(2rem,2.8vw,3.85rem)]
+            leading-none
+            tracking-[-0.045em]
+            text-black
+            [@media_(max-height:1100px)]:text-[clamp(2rem,2.5vw,3.25rem)]
+          "
+        >
+          Norberto D’Abreu
+        </Link>
+
+        <div className="flex justify-end pr-[clamp(1.25rem,4vw,5rem)]">
+          <LanguageSwitcher />
+        </div>
+      </header>
+
+      {/* Mobile / tablet header */}
       <header
         className="
           relative
@@ -31,7 +80,8 @@ export function InternalPageShell({
           justify-between
           border-b
           border-black/10
-          px-[clamp(1.25rem,4vw,5rem)]
+          px-5
+          lg:hidden
         "
       >
         <Link
@@ -39,7 +89,7 @@ export function InternalPageShell({
           className="
             display-title
             whitespace-nowrap
-            text-[clamp(2rem,3vw,4rem)]
+            text-3xl
             leading-none
             tracking-[-0.045em]
             text-black
@@ -57,9 +107,8 @@ export function InternalPageShell({
           hidden
           min-h-0
           flex-1
-          lg:grid
-          [--internal-artwork-width:clamp(380px,32vw,700px)]
           grid-cols-[var(--internal-artwork-width)_minmax(0,1fr)]
+          lg:grid
         "
       >
         <aside className="relative h-full min-h-0 overflow-hidden border-r border-black/10 bg-black/5">
